@@ -299,3 +299,66 @@ We will consider this when defining the learning problem, interpreting learned c
 
 The ontology will initially preserve the observed relationships without assuming that missing links represent negative information.
 
+
+
+
+## 11. Ontology Implementation and Validation
+
+### 11.1 Ontology Construction
+
+The relational Hepatitis dataset was transformed into an OWL knowledge base using Owlready2.
+
+Four main entity classes were created:
+
+- `Patient`
+- `BioProfile`
+- `LabRecord`
+- `DurationRecord`
+
+The database records were represented as OWL individuals, preserving their original identifiers. Three object properties represent the relationships between patients and their associated records:
+
+- `hasBioProfile`
+- `hasLabRecord`
+- `hasDurationRecord`
+
+Categorical attributes were represented using dedicated OWL classes. For example, patient sex and age categories are represented by classes such as `Sex_0` and `Age_4`. Similarly, fibrosis, activity, laboratory measurements, and duration categories were represented by attribute-specific classes.
+
+Original categorical codes were also preserved through data properties, allowing the ontology to retain the source values.
+
+### 11.2 Target Separation
+
+The target attribute `Type` was deliberately excluded from the predictive ontology to prevent target leakage.
+
+Instead, patient identifiers and their corresponding target labels were exported separately to `data/processed/labels.csv`.
+
+The resulting label distribution is:
+
+| Target code | Number of patients |
+|---|---:|
+| 0 | 206 |
+| 1 | 294 |
+| **Total** | **500** |
+
+### 11.3 Ontology Validation
+
+The generated ontology was independently reloaded from `ontology/hepatitis.owl` and checked against the source CSV files.
+
+The validation confirmed:
+
+- 500 Patient individuals.
+- 32 BioProfile individuals.
+- 5,691 LabRecord individuals.
+- 196 DurationRecord individuals.
+- 621 `hasBioProfile` relationships.
+- 5,691 `hasLabRecord` relationships.
+- 196 `hasDurationRecord` relationships.
+- Correct preservation of categorical assertions and laboratory data-property values.
+- Separation of target labels from the ontology.
+
+### 11.4 Logical Consistency
+
+The ontology was tested using the HermiT reasoner through Owlready2.
+
+HermiT completed successfully in approximately 2.6 seconds without reporting any logical inconsistencies.
+
+This confirms that the ontology is logically consistent under its current axioms. It does not, by itself, establish that all modelling assumptions are semantically correct or that the ontology has been validated against external domain knowledge.
