@@ -100,3 +100,81 @@ Additional relational-learning description:
 https://huggingface.co/datasets/andrewcropper/ilp-datasets
 
 This document records observed facts and preliminary modelling decisions. It will be updated as further data inspection and ontology design are completed.
+
+## 8. Category frequency distributions
+
+The following frequencies were queried directly from the remote database. Counts refer to records in each respective table, not necessarily unique patients.
+
+| Attribute | Category | Frequency |
+|---|---:|---:|
+| sex | 0 | 355 |
+| sex | 1 | 145 |
+| age | 0 | 7 |
+| age | 1 | 28 |
+| age | 2 | 32 |
+| age | 3 | 44 |
+| age | 4 | 40 |
+| age | 5 | 278 |
+| age | 6 | 71 |
+| fibros | 0 | 3 |
+| fibros | 1 | 8 |
+| fibros | 2 | 7 |
+| fibros | 3 | 7 |
+| fibros | 4 | 7 |
+| activity | 0 | 2 |
+| activity | 1 | 9 |
+| activity | 2 | 8 |
+| activity | 3 | 8 |
+| activity | 4 | 5 |
+| dur | 0 | 39 |
+| dur | 1 | 39 |
+| dur | 2 | 39 |
+| dur | 3 | 39 |
+| dur | 4 | 40 |
+| got | 0 | 426 |
+| got | 1 | 1,762 |
+| got | 2 | 1,714 |
+| got | 3 | 1,756 |
+| got | 4 | 33 |
+| gpt | 0 | 366 |
+| gpt | 1 | 2,506 |
+| gpt | 2 | 2,699 |
+| gpt | 3 | 120 |
+| alb | 0 | 3,970 |
+| alb | 1 | 1,721 |
+| tbil | 0 | 847 |
+| tbil | 1 | 4,844 |
+| dbil | 0 | 3,325 |
+| dbil | 1 | 2,366 |
+| che | 0 | 7 |
+| che | 1 | 141 |
+| che | 2 | 51 |
+| che | 3 | 6 |
+| che | 4 | 64 |
+| che | 5 | 692 |
+| che | 6 | 3,998 |
+| che | 7 | 601 |
+| che | 8 | 105 |
+| che | 9 | 26 |
+| ttt | 0 | 329 |
+| ttt | 1 | 331 |
+| ttt | 2 | 822 |
+| ttt | 3 | 892 |
+| ttt | 4 | 886 |
+| ttt | 5 | 2,431 |
+| ztt | 0 | 151 |
+| ztt | 1 | 1,272 |
+| ztt | 2 | 543 |
+| ztt | 3 | 1,206 |
+| ztt | 4 | 823 |
+| ztt | 5 | 1,696 |
+| tcho | 0 | 828 |
+| tcho | 1 | 2,799 |
+| tcho | 2 | 1,469 |
+| tcho | 3 | 595 |
+| tp | 0 | 866 |
+| tp | 1 | 2,319 |
+| tp | 2 | 1,433 |
+| tp | 3 | 1,073 |
+
+Rare categories will be retained initially rather than discarded. Their usefulness and risk of overfitting will be evaluated during concept learning.
