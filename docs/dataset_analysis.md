@@ -211,3 +211,91 @@ clinical interpretations.
 References:
 - https://relational.fel.cvut.cz/dataset/Hepatitis
 - https://huggingface.co/datasets/andrewcropper/ilp-datasets
+
+
+
+## 10. Relational Structure and Cardinality Analysis
+
+The Hepatitis_std dataset contains four entity tables (`dispat`, `Bio`, `indis`, and `inf`) and three association tables (`rel11`, `rel12`, and `rel13`).
+
+The `dispat` table represents the 500 patients and serves as the central entity. The remaining entity tables contain additional records connected to patients through association tables.
+
+### 10.1 Relationship Analysis
+
+Beyond the basic relationship statistics presented in Section 4, we examined the actual links between patients and records using the locally extracted CSV files.
+
+The analysis included:
+- Number of unique patients and linked records.
+- Number of records associated with each patient.
+- Duplicate relationship checks.
+- Foreign-key integrity checks.
+
+All six foreign-key checks passed, and no duplicate patient-record links were found.
+
+**Patient–Bio relationship (`rel11`)**
+
+The association table contains 621 links between 500 patients and only 32 distinct Bio records.
+
+Every patient is connected to at least one Bio record. However, individual Bio records can be shared by multiple patients. One Bio record is referenced by as many as 112 patients.
+
+This is therefore a many-to-many relationship.
+
+An important modeling consideration is that these 32 records should not be interpreted as 32 individual biopsy events. The available data does not establish that interpretation. We will use the neutral term `BioProfile` when representing these records in the ontology.
+
+**Patient–Laboratory relationship (`rel12`)**
+
+The association table contains 5,691 links to 5,691 distinct laboratory records.
+
+Each laboratory record is linked to exactly one patient, while 496 patients have at least one laboratory record. The number of laboratory records per linked patient ranges from 1 to 105, with an average of approximately 11.47.
+
+This represents a one-to-many relationship from Patient to LabRecord. Four patients have no linked laboratory record.
+
+**Patient–Duration relationship (`rel13`)**
+
+The association table contains 196 links between 196 patients and 196 distinct duration records.
+
+Each linked patient has exactly one duration record. The remaining 304 patients have no linked duration record.
+
+This represents a one-to-one relationship among the linked records, although the relationship is not present for every patient.
+
+### 10.2 Implications for Ontology Construction
+
+The ontology will preserve the original relational structure rather than flattening all records into patient-level attributes.
+
+The planned representation is:
+
+- Each row in `dispat` becomes a `Patient` individual.
+- Each row in `Bio` becomes a `BioProfile` individual.
+- Each row in `indis` becomes a `LabRecord` individual.
+- Each row in `inf` becomes a `DurationRecord` individual.
+
+The association tables will be represented through OWL object properties:
+
+- `hasBioProfile`: connects patients to Bio profiles.
+- `hasLabRecord`: connects patients to laboratory records.
+- `hasDurationRecord`: connects patients to duration records.
+
+Shared Bio records will be represented by the same OWL individual. This preserves the many-to-many relationship without artificially duplicating records.
+
+Categorical attributes will be represented using classes and class assertions. For example, a Bio profile with `fibros = 3` can be asserted as an instance of `FibrosisLevel_3`.
+
+Similarly:
+- Age and sex categories will be represented on Patient individuals.
+- Fibrosis and activity categories will be represented on BioProfile individuals.
+- Laboratory categories will be represented on LabRecord individuals.
+- Duration categories will be represented on DurationRecord individuals.
+
+The target attribute `Type` will be excluded from the predictive ontology and maintained separately as the classification label for concept learning and evaluation. This prevents target leakage.
+
+### 10.3 Open World Assumption Considerations
+
+OWL follows the Open World Assumption (OWA). Under this assumption, the absence of an asserted relationship does not automatically imply that the relationship is false.
+
+For example, a patient without an asserted `hasLabRecord` relationship cannot automatically be classified as a patient who has no laboratory records. The knowledge base may simply lack that information.
+
+This distinction is particularly important for the four patients without laboratory links and the 304 patients without duration links.
+
+We will consider this when defining the learning problem, interpreting learned concepts, and deciding whether closure axioms are necessary.
+
+The ontology will initially preserve the observed relationships without assuming that missing links represent negative information.
+
