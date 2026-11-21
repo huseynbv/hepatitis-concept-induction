@@ -221,3 +221,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Project-specific exclusions
+tools/
+*.zip
+*.tar.gz
+results/logs/
