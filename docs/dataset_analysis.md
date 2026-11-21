@@ -178,3 +178,36 @@ The following frequencies were queried directly from the remote database. Counts
 | tp | 3 | 1,073 |
 
 Rare categories will be retained initially rather than discarded. Their usefulness and risk of overfitting will be evaluated during concept learning.
+
+## 9. Attribute semantics and codebook
+
+The attribute descriptions were cross-checked against the Hepatitis
+relational-learning dataset documentation.
+
+| Table | Attribute | Description | Observed codes |
+|---|---|---|---|
+| dispat | sex | Patient sex | 0–1 |
+| dispat | age | Age category | 0–6 |
+| Bio | fibros | Fibrosis level | 0–4 |
+| Bio | activity | Biopsy activity | 0–4 |
+| indis | got | GOT enzyme level | 0–4 |
+| indis | gpt | GPT enzyme level | 0–3 |
+| indis | alb | Albumin level | 0–1 |
+| indis | tbil | Total bilirubin | 0–1 |
+| indis | dbil | Direct bilirubin | 0–1 |
+| indis | che | Cholinesterase level | 0–9 |
+| indis | ttt | TTT flocculation test | 0–5 |
+| indis | ztt | ZTT flocculation test | 0–5 |
+| indis | tcho | Total cholesterol | 0–3 |
+| indis | tp | Total protein | 0–3 |
+| inf | dur | Antibody-duration category | 0–4 |
+
+The source documentation describes these attributes as discretized
+categories. Exact clinical boundaries or meanings for individual
+category codes have not been established. Therefore, the original
+codes will be preserved in the ontology without assigning unsupported
+clinical interpretations.
+
+References:
+- https://relational.fel.cvut.cz/dataset/Hepatitis
+- https://huggingface.co/datasets/andrewcropper/ilp-datasets
