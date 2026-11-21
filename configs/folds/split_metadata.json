@@ -1,0 +1,16 @@
+{
+    "random_seed": 42,
+    "test_size": 0.2,
+    "stratified": true,
+    "total_samples": 500,
+    "training_samples": 400,
+    "testing_samples": 100,
+    "training_distribution": {
+        "0": 165,
+        "1": 235
+    },
+    "testing_distribution": {
+        "0": 41,
+        "1": 59
+    }
+}
