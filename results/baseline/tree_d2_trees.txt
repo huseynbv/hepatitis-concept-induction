@@ -1,0 +1,59 @@
+===== fold 0 =====
+|--- che_min <= 5.50
+|   |--- n_biopsies <= 1.50
+|   |   |--- class: 1.0
+|   |--- n_biopsies >  1.50
+|   |   |--- class: 0.0
+|--- che_min >  5.50
+|   |--- age <= 1.50
+|   |   |--- class: 1.0
+|   |--- age >  1.50
+|   |   |--- class: 0.0
+
+===== fold 1 =====
+|--- che_min <= 5.50
+|   |--- n_biopsies <= 1.50
+|   |   |--- class: 1.0
+|   |--- n_biopsies >  1.50
+|   |   |--- class: 0.0
+|--- che_min >  5.50
+|   |--- age <= 4.50
+|   |   |--- class: 0.0
+|   |--- age >  4.50
+|   |   |--- class: 0.0
+
+===== fold 2 =====
+|--- ztt_mean <= 3.03
+|   |--- n_biopsies <= 1.50
+|   |   |--- class: 1.0
+|   |--- n_biopsies >  1.50
+|   |   |--- class: 0.0
+|--- ztt_mean >  3.03
+|   |--- che_max <= 5.50
+|   |   |--- class: 1.0
+|   |--- che_max >  5.50
+|   |   |--- class: 0.0
+
+===== fold 3 =====
+|--- che_min <= 5.50
+|   |--- n_biopsies <= 1.50
+|   |   |--- class: 1.0
+|   |--- n_biopsies >  1.50
+|   |   |--- class: 0.0
+|--- che_min >  5.50
+|   |--- age <= 2.50
+|   |   |--- class: 1.0
+|   |--- age >  2.50
+|   |   |--- class: 0.0
+
+===== fold 4 =====
+|--- che_min <= 5.50
+|   |--- n_biopsies <= 1.50
+|   |   |--- class: 1.0
+|   |--- n_biopsies >  1.50
+|   |   |--- class: 0.0
+|--- che_min >  5.50
+|   |--- age <= 4.50
+|   |   |--- class: 0.0
+|   |--- age >  4.50
+|   |   |--- class: 0.0

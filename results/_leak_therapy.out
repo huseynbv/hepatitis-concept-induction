@@ -1,0 +1,22 @@
+wrote conf/leak_therapy/fold0.conf
+wrote conf/leak_therapy/fold1.conf
+wrote conf/leak_therapy/fold2.conf
+wrote conf/leak_therapy/fold3.conf
+wrote conf/leak_therapy/fold4.conf
+ fold                                               concept  length  train_acc  test_acc  test_prec  test_rec  test_f1  concepts_tested  search_time_s
+    0 (hasTherapy only Nothing) and (hasBiopsy max 1 Thing)       8      0.855      0.82      0.700       1.0    0.824            16337         60.000
+    1 (hasTherapy only Nothing) and (hasBiopsy max 1 Thing)       8      0.850      0.84      0.719       1.0    0.837            15697         60.003
+    2 (hasTherapy only Nothing) and (hasBiopsy max 1 Thing)       8      0.845      0.86      0.745       1.0    0.854            17039         60.001
+    3 (hasTherapy only Nothing) and (hasBiopsy max 1 Thing)       8      0.842      0.87      0.759       1.0    0.863            16816         60.000
+    4 (hasTherapy only Nothing) and (hasBiopsy max 1 Thing)       8      0.848      0.85      0.732       1.0    0.845            16232         60.002
+
+mean ± std over folds:
+  train_acc            0.848 ± 0.005
+  train_f1             0.844 ± 0.004
+  test_acc             0.848 ± 0.019
+  test_prec            0.731 ± 0.023
+  test_rec             1.000 ± 0.000
+  test_f1              0.845 ± 0.015
+  length               8.000 ± 0.000
+  search_time_s       60.001 ± 0.001
+  concepts_tested  16424.200 ± 525.559

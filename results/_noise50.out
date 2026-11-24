@@ -1,0 +1,22 @@
+wrote conf/noise50/fold0.conf
+wrote conf/noise50/fold1.conf
+wrote conf/noise50/fold2.conf
+wrote conf/noise50/fold3.conf
+wrote conf/noise50/fold4.conf
+ fold                                      concept  length  train_acc  test_acc  test_prec  test_rec  test_f1  concepts_tested  search_time_s
+    0 hasExam some (che some integer[>= 2 , <= 5])       5      0.782      0.74      0.682     0.714    0.698            18068         60.001
+    1 hasExam some (che some integer[>= 2 , <= 5])       5      0.778      0.76      0.707     0.707    0.707            18458         60.003
+    2 hasExam some (che some integer[>= 2 , <= 5])       5      0.765      0.81      0.824     0.683    0.747            17579         60.002
+    3 hasExam some (che some integer[>= 2 , <= 5])       5      0.778      0.76      0.689     0.756    0.721            18917         60.000
+    4 hasExam some (che some integer[>= 2 , <= 5])       5      0.768      0.80      0.706     0.878    0.783            19822         60.004
+
+mean ± std over folds:
+  train_acc            0.774 ± 0.007
+  train_f1             0.732 ± 0.009
+  test_acc             0.774 ± 0.030
+  test_prec            0.721 ± 0.058
+  test_rec             0.748 ± 0.077
+  test_f1              0.731 ± 0.034
+  length               5.000 ± 0.000
+  search_time_s       60.002 ± 0.002
+  concepts_tested  18568.800 ± 856.524

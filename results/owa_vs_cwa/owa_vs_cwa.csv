@@ -1,0 +1,8 @@
+ontology,concept,cwa_covered,owa_covered,cwa_acc,owa_acc,cwa_f1,owa_f1,owa_subset_of_cwa,hermit_s
+hepatitis_datatype.owl,"hasExam some (che some integer[>= 2 , <= 5])",215,3,0.8,0.8,0.7499999999999999,0.7499999999999999,True,2.2
+hepatitis_datatype.owl,hasExam max 1 ((tcho some integer[<= 2]) and (ztt some integer[>= 4])),220,0,0.7,0.5,0.6666666666666665,0.0,True,2.2
+hepatitis_datatype.owl,Sex0 and (hasBiopsy max 1 Thing) and (age some integer[<= 5]),264,0,0.5,0.5,0.4444444444444445,0.0,True,2.2
+hepatitis_classes.owl,AGE_1 or (hasExam some (CHE_5 and (not (TP_3)))),195,4,0.9,0.9,0.888888888888889,0.888888888888889,True,0.6
+hepatitis_classes.owl,hasExam some ((not (CHE_6)) and (not (CHE_7))),259,6,0.7,0.7,0.7272727272727272,0.7272727272727272,True,0.6
+hepatitis_datatype_therapy.owl,(hasTherapy only Nothing) and (hasBiopsy max 1 Thing),282,0,1.0,0.5,1.0,0.0,True,0.6
+hepatitis_datatype_therapy.owl,hasTherapy only Nothing,304,0,1.0,0.5,1.0,0.0,True,0.6

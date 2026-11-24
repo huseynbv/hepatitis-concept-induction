@@ -1,0 +1,52 @@
+DL-Learner command line interface
+Initializing component 'ks' of type OWL File ...
+... initialized component 'ks' in 0ms. Status: OK
+Initializing component 'reasoner' of type closed world reasoner ...
+Loaded reasoner: Pellet (com.clarkparsia.pellet.owlapiv3.PelletReasoner)
+Materializing TBox...
+materialising concepts
+[.....] 0%[.....] 1%[.....] 2%[.....] 4%[.....] 5%[.....] 7%[.....] 8%[.....] 10%[.....] 11%[.....] 13%[.....] 14%[.....] 15%[.....] 17%[.....] 18%[=....] 20%[=....] 21%[=....] 23%[=....] 24%[=....] 26%[=....] 27%[=....] 28%[=....] 30%[=....] 31%[=....] 33%[=....] 34%[=....] 36%[=....] 37%[=....] 39%[==...] 40%[==...] 42%[==...] 43%[==...] 44%[==...] 46%[==...] 47%[==...] 49%[==...] 50%[==...] 52%[==...] 53%[==...] 55%[==...] 56%[==...] 57%[==...] 59%[===..] 60%[===..] 62%[===..] 63%[===..] 65%[===..] 66%[===..] 68%[===..] 69%[===..] 71%[===..] 72%[===..] 73%[===..] 75%[===..] 76%[===..] 78%[===..] 79%[====.] 81%[====.] 82%[====.] 84%[====.] 85%[====.] 86%[====.] 88%[====.] 89%[====.] 91%[====.] 92%[====.] 94%[====.] 95%materialising object properties ...
+[====.] 97%[====.] 98%materialising datatype properties
+...TBox materialised in 1059 ms.
+... initialized component 'reasoner' in 6s 831ms. Status: OK
+Initializing component 'op' of type rho refinement operator ...
+... initialized component 'op' in 30ms. Status: OK
+Initializing component 'lp' of type PosNegLPStandard ...
+... initialized component 'lp' in 1ms. Status: OK
+Initializing component 'h' of type OEHeuristicRuntime ...
+... initialized component 'h' in 0ms. Status: OK
+Initializing component 'alg' of type CELOE ...
+... initialized component 'alg' in 7ms. Status: OK
+Running algorithm instance "alg" (CELOE)
+start class:Thing
+more accurate (41.25%) class expression found after 41ms: Thing
+more accurate (50.75%) class expression found after 111ms: Sex0
+more accurate (55.00%) class expression found after 553ms: Sex0 and (not (AGE_6))
+more accurate (56.00%) class expression found after 1s894ms: hasExam some ALB_1
+more accurate (71.25%) class expression found after 13s547ms: hasExam only (not (ZTT_5))
+more accurate (71.50%) class expression found after 14s376ms: hasExam only ((not (CHE_0)) and (not (ZTT_5)))
+more accurate (74.75%) class expression found after 32s961ms: AGE_1 or (hasExam some CHE_5)
+more accurate (75.00%) class expression found after 33s952ms: AGE_1 or ((not (AGE_0)) and (hasExam some CHE_5))
+more accurate (75.25%) class expression found after 36s192ms: AGE_1 or (hasExam some (CHE_5 and (ALB_1 or TBIL_1)))
+Algorithm terminated successfully (time: 60s 0ms, 36158 descriptions tested, 15949 nodes in the search tree).
+
+number of retrievals: 38533
+retrieval reasoning time: 50s 603ms ( 1ms per retrieval)
+number of instance checks: 9 (0 multiple)
+instance check reasoning time: 0ms ( 0ms per instance check)
+(complex) subsumption checks: 1698 (0 multiple)
+subsumption reasoning time: 144ms ( 0ms per subsumption check)
+overall reasoning time: 50s 748ms
+
+solutions:
+1: AGE_1 or (hasExam some (CHE_5 and (ALB_1 or TBIL_1))) (pred. acc.: 75.25%, F-measure: 70.45%)
+2: AGE_1 or ((not (AGE_0)) and (hasExam some CHE_5)) (pred. acc.: 75.00%, F-measure: 70.24%)
+3: (AGE_1 or (hasExam some CHE_5)) and (not (AGE_0)) (pred. acc.: 75.00%, F-measure: 70.24%)
+4: AGE_1 or (hasExam some CHE_5) (pred. acc.: 74.75%, F-measure: 70.03%)
+5: AGE_1 or (hasExam some (CHE_5 and (not (TTT_0)))) (pred. acc.: 74.75%, F-measure: 70.03%)
+6: AGE_1 or (hasExam some (CHE_5 and (not (GOT_4)))) (pred. acc.: 74.75%, F-measure: 69.85%)
+7: AGE_1 or (hasExam some (CHE_5 and (not (GOT_0)))) (pred. acc.: 74.75%, F-measure: 69.85%)
+8: AGE_1 or (hasExam some (CHE_5 and (ALB_1 or DBIL_1))) (pred. acc.: 74.75%, F-measure: 69.67%)
+9: AGE_1 or ((hasBiopsy some Biopsy) and (hasExam some CHE_5)) (pred. acc.: 74.75%, F-measure: 70.03%)
+10: (AGE_1 or (hasExam some CHE_5)) and (hasExam some Exam) (pred. acc.: 74.75%, F-measure: 70.03%)
+

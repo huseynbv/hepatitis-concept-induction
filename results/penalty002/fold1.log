@@ -1,0 +1,57 @@
+DL-Learner command line interface
+Initializing component 'ks' of type OWL File ...
+... initialized component 'ks' in 0ms. Status: OK
+Initializing component 'reasoner' of type closed world reasoner ...
+Loaded reasoner: Pellet (com.clarkparsia.pellet.owlapiv3.PelletReasoner)
+Materializing TBox...
+materialising concepts
+[.....] 0%[.....] 5%[.....] 10%[.....] 15%[=....] 20%materialising object properties ...
+[=....] 25%[=....] 30%materialising datatype properties
+[=....] 35%[==...] 40%[==...] 45%[==...] 50%[==...] 55%[===..] 60%[===..] 65%[===..] 70%[===..] 75%[====.] 80%[====.] 85%[====.] 90%[====.] 95%...TBox materialised in 1532 ms.
+... initialized component 'reasoner' in 7s 410ms. Status: OK
+Initializing component 'op' of type rho refinement operator ...
+... initialized component 'op' in 153ms. Status: OK
+Initializing component 'lp' of type PosNegLPStandard ...
+... initialized component 'lp' in 1ms. Status: OK
+Initializing component 'h' of type OEHeuristicRuntime ...
+... initialized component 'h' in 0ms. Status: OK
+Initializing component 'alg' of type CELOE ...
+... initialized component 'alg' in 2ms. Status: OK
+Running algorithm instance "alg" (CELOE)
+start class:Thing
+more accurate (41.25%) class expression found after 28ms: Thing
+more accurate (48.75%) class expression found after 129ms: not (Sex1)
+more accurate (54.75%) class expression found after 1s554ms: Sex0 and (age some integer[<= 5])
+more accurate (55.25%) class expression found after 9s335ms: Sex0 and (hasBiopsy max 3 Thing) and (age some integer[<= 5])
+more accurate (56.00%) class expression found after 9s342ms: Sex0 and (hasBiopsy max 2 Thing) and (age some integer[<= 5])
+more accurate (59.00%) class expression found after 9s347ms: Sex0 and (hasBiopsy max 1 Thing) and (age some integer[<= 5])
+more accurate (60.25%) class expression found after 12s422ms: Sex0 and (hasExam some (ztt some integer[>= 1 , <= 3]))
+more accurate (60.50%) class expression found after 12s469ms: Sex0 and (hasExam some ((ttt some integer[>= 1]) and (ztt some integer[<= 3])))
+more accurate (61.25%) class expression found after 12s497ms: Sex0 and (hasExam some ((ttt some integer[>= 2]) and (ztt some integer[<= 3])))
+more accurate (62.25%) class expression found after 13s194ms: Sex0 and (hasExam some (ztt some integer[<= 3])) and (hasBiopsy max 1 Thing)
+more accurate (69.25%) class expression found after 50s439ms: hasExam max 4 (ztt some integer[>= 3])
+more accurate (70.25%) class expression found after 51s805ms: hasExam max 2 (ztt some integer[>= 4])
+more accurate (71.50%) class expression found after 51s818ms: hasExam max 1 (ztt some integer[>= 4])
+more accurate (73.00%) class expression found after 53s695ms: hasExam max 1 ((tcho some integer[<= 2]) and (ztt some integer[>= 4]))
+Algorithm terminated successfully (time: 60s 2ms, 16883 descriptions tested, 8595 nodes in the search tree).
+
+number of retrievals: 17304
+retrieval reasoning time: 55s 625ms ( 3ms per retrieval)
+number of instance checks: 127 (0 multiple)
+instance check reasoning time: 1ms ( 0ms per instance check)
+(complex) subsumption checks: 1419 (0 multiple)
+subsumption reasoning time: 176ms ( 0ms per subsumption check)
+overall reasoning time: 55s 803ms
+
+solutions:
+1: hasExam max 1 ((tcho some integer[<= 2]) and (ztt some integer[>= 4])) (pred. acc.: 73.00%, F-measure: 70.00%)
+2: hasExam max 1 (ztt some integer[>= 4]) (pred. acc.: 71.50%, F-measure: 67.24%)
+3: Patient and (hasExam max 1 (ztt some integer[>= 4])) (pred. acc.: 71.50%, F-measure: 67.24%)
+4: (not (Exam)) and (hasExam max 1 (ztt some integer[>= 4])) (pred. acc.: 71.50%, F-measure: 67.24%)
+5: (not (Biopsy)) and (hasExam max 1 (ztt some integer[>= 4])) (pred. acc.: 71.50%, F-measure: 67.24%)
+6: hasExam max 1 ((alb some integer[<= 1]) and (ztt some integer[>= 4])) (pred. acc.: 71.50%, F-measure: 67.24%)
+7: (hasExam max 1 (ztt some integer[>= 4])) and (age some integer[<= 6]) (pred. acc.: 71.50%, F-measure: 67.24%)
+8: (hasExam max 1 (ztt some integer[>= 4])) and (age some integer[>= 0]) (pred. acc.: 71.50%, F-measure: 67.24%)
+9: (hasBiopsy some Biopsy) and (hasExam max 1 (ztt some integer[>= 4])) (pred. acc.: 71.50%, F-measure: 67.24%)
+10: ((not (Exam)) and (hasExam max 1 (ztt some integer[>= 4]))) or (not (Patient)) (pred. acc.: 71.50%, F-measure: 67.24%)
+

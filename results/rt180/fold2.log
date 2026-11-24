@@ -1,0 +1,51 @@
+DL-Learner command line interface
+Initializing component 'ks' of type OWL File ...
+... initialized component 'ks' in 0ms. Status: OK
+Initializing component 'reasoner' of type closed world reasoner ...
+Loaded reasoner: Pellet (com.clarkparsia.pellet.owlapiv3.PelletReasoner)
+Materializing TBox...
+materialising concepts
+[.....] 0%[.....] 5%[.....] 10%[.....] 15%[=....] 20%materialising object properties ...
+[=....] 25%[=....] 30%materialising datatype properties
+[=....] 35%[==...] 40%[==...] 45%[==...] 50%[==...] 55%[===..] 60%[===..] 65%[===..] 70%[===..] 75%[====.] 80%[====.] 85%[====.] 90%[====.] 95%...TBox materialised in 468 ms.
+... initialized component 'reasoner' in 2s 271ms. Status: OK
+Initializing component 'op' of type rho refinement operator ...
+... initialized component 'op' in 84ms. Status: OK
+Initializing component 'lp' of type PosNegLPStandard ...
+... initialized component 'lp' in 0ms. Status: OK
+Initializing component 'h' of type OEHeuristicRuntime ...
+... initialized component 'h' in 0ms. Status: OK
+Initializing component 'alg' of type CELOE ...
+... initialized component 'alg' in 2ms. Status: OK
+Running algorithm instance "alg" (CELOE)
+start class:Thing
+more accurate (41.25%) class expression found after 14ms: Thing
+more accurate (51.25%) class expression found after 42ms: Sex0
+more accurate (56.50%) class expression found after 400ms: Sex0 and (age some integer[<= 5])
+more accurate (71.50%) class expression found after 2s105ms: hasExam only (ztt some integer[<= 4])
+more accurate (72.00%) class expression found after 6s350ms: hasExam only ((che some integer[>= 1]) and (ztt some integer[<= 4]))
+more accurate (72.75%) class expression found after 6s391ms: hasExam some ((che some integer[<= 5]) and (ztt some integer[>= 1]))
+more accurate (73.50%) class expression found after 6s413ms: hasExam some ((che some integer[<= 5]) and (ttt some integer[>= 1]))
+more accurate (76.50%) class expression found after 6s541ms: hasExam some (che some integer[>= 2 , <= 5])
+Algorithm terminated successfully (time: 180s 2ms, 67169 descriptions tested, 40859 nodes in the search tree).
+
+number of retrievals: 67364
+retrieval reasoning time: 168s 168ms ( 2ms per retrieval)
+number of instance checks: 184 (0 multiple)
+instance check reasoning time: 0ms ( 0ms per instance check)
+(complex) subsumption checks: 221 (0 multiple)
+subsumption reasoning time: 52ms ( 0ms per subsumption check)
+overall reasoning time: 168s 222ms
+
+solutions:
+1: hasExam some (che some integer[>= 2 , <= 5]) (pred. acc.: 76.50%, F-measure: 72.83%)
+2: hasExam some (che some integer[>= 4 , <= 5]) (pred. acc.: 75.50%, F-measure: 71.35%)
+3: hasExam some (che some integer[>= 3 , <= 5]) (pred. acc.: 75.50%, F-measure: 71.35%)
+4: (hasExam some (che some integer[<= 5])) and (hasBiopsy max 1 Thing) (pred. acc.: 75.00%, F-measure: 72.07%)
+5: (hasExam some Thing) and (hasExam only (ztt some integer[<= 4])) and (hasBiopsy max 1 Thing) (pred. acc.: 74.50%, F-measure: 70.00%)
+6: hasExam some ((che some integer[<= 5]) and (ttt some integer[>= 1])) (pred. acc.: 73.50%, F-measure: 70.88%)
+7: hasExam max 1 (ztt some integer[>= 4]) (pred. acc.: 73.25%, F-measure: 69.34%)
+8: Patient and (hasExam max 1 (ztt some integer[>= 4])) (pred. acc.: 73.25%, F-measure: 69.34%)
+9: hasExam some ((che some integer[<= 5]) and (ttt some integer[>= 2])) (pred. acc.: 73.25%, F-measure: 70.36%)
+10: hasExam some ((che some integer[<= 5]) and (dbil some integer[>= 1])) (pred. acc.: 73.25%, F-measure: 69.52%)
+

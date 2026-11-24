@@ -1,0 +1,7 @@
+table,column,ref_table,ref_column
+rel11,b_id,Bio,b_id
+rel11,m_id,dispat,m_id
+rel13,m_id,dispat,m_id
+rel13,a_id,inf,a_id
+rel12,m_id,dispat,m_id
+rel12,in_id,indis,in_id

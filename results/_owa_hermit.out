@@ -1,0 +1,22 @@
+wrote conf/owa_hermit/fold0.conf
+wrote conf/owa_hermit/fold1.conf
+wrote conf/owa_hermit/fold2.conf
+wrote conf/owa_hermit/fold3.conf
+wrote conf/owa_hermit/fold4.conf
+ fold concept  length  train_acc  test_acc  test_prec  test_rec  test_f1  concepts_tested  search_time_s
+    0    Sex0       1      0.498      0.54      0.472     0.810    0.596                8       1062.120
+    1    Sex0       1      0.488      0.58      0.492     0.780    0.604                8        926.135
+    2    Sex0       1      0.512      0.48      0.423     0.732    0.536                8       1054.519
+    3    Sex0       1      0.507      0.50      0.438     0.780    0.561                8       1065.231
+    4    Sex0       1      0.525      0.43      0.392     0.707    0.504                8        933.998
+
+mean ± std over folds:
+  train_acc            0.506 ± 0.014
+  train_f1             0.560 ± 0.010
+  test_acc             0.506 ± 0.057
+  test_prec            0.443 ± 0.040
+  test_rec             0.762 ± 0.041
+  test_f1              0.560 ± 0.042
+  length               1.000 ± 0.000
+  search_time_s     1008.401 ± 71.669
+  concepts_tested      8.000 ± 0.000

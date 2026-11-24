@@ -1,0 +1,179 @@
+===== fold 0 =====
+|--- che_min <= 5.50
+|   |--- n_biopsies <= 1.50
+|   |   |--- che_min <= 1.50
+|   |   |   |--- tcho_mean <= 1.40
+|   |   |   |   |--- class: 0.0
+|   |   |   |--- tcho_mean >  1.40
+|   |   |   |   |--- class: 1.0
+|   |   |--- che_min >  1.50
+|   |   |   |--- ztt_mean <= 4.20
+|   |   |   |   |--- class: 1.0
+|   |   |   |--- ztt_mean >  4.20
+|   |   |   |   |--- class: 0.0
+|   |--- n_biopsies >  1.50
+|   |   |--- class: 0.0
+|--- che_min >  5.50
+|   |--- age <= 1.50
+|   |   |--- got_mean <= 1.42
+|   |   |   |--- n_exams <= 7.50
+|   |   |   |   |--- class: 1.0
+|   |   |   |--- n_exams >  7.50
+|   |   |   |   |--- class: 0.0
+|   |   |--- got_mean >  1.42
+|   |   |   |--- tbil_mean <= 0.73
+|   |   |   |   |--- class: 0.0
+|   |   |   |--- tbil_mean >  0.73
+|   |   |   |   |--- class: 1.0
+|   |--- age >  1.50
+|   |   |--- tp_max <= 1.50
+|   |   |   |--- age <= 4.50
+|   |   |   |   |--- class: 1.0
+|   |   |   |--- age >  4.50
+|   |   |   |   |--- class: 0.0
+|   |   |--- tp_max >  1.50
+|   |   |   |--- ztt_max <= 4.50
+|   |   |   |   |--- class: 0.0
+|   |   |   |--- ztt_max >  4.50
+|   |   |   |   |--- class: 0.0
+
+===== fold 1 =====
+|--- che_min <= 5.50
+|   |--- n_biopsies <= 1.50
+|   |   |--- ztt_max <= 4.50
+|   |   |   |--- ttt_min <= 0.50
+|   |   |   |   |--- class: 1.0
+|   |   |   |--- ttt_min >  0.50
+|   |   |   |   |--- class: 1.0
+|   |   |--- ztt_max >  4.50
+|   |   |   |--- tcho_mean <= 0.87
+|   |   |   |   |--- class: 0.0
+|   |   |   |--- tcho_mean >  0.87
+|   |   |   |   |--- class: 1.0
+|   |--- n_biopsies >  1.50
+|   |   |--- class: 0.0
+|--- che_min >  5.50
+|   |--- age <= 4.50
+|   |   |--- got_mean <= 1.46
+|   |   |   |--- alb_mean <= 0.28
+|   |   |   |   |--- class: 0.0
+|   |   |   |--- alb_mean >  0.28
+|   |   |   |   |--- class: 0.0
+|   |   |--- got_mean >  1.46
+|   |   |   |--- tp_mean <= 2.32
+|   |   |   |   |--- class: 1.0
+|   |   |   |--- tp_mean >  2.32
+|   |   |   |   |--- class: 0.0
+|   |--- age >  4.50
+|   |   |--- tcho_mean <= 2.76
+|   |   |   |--- ztt_mean <= 2.39
+|   |   |   |   |--- class: 0.0
+|   |   |   |--- ztt_mean >  2.39
+|   |   |   |   |--- class: 0.0
+|   |   |--- tcho_mean >  2.76
+|   |   |   |--- tcho_mean <= 2.97
+|   |   |   |   |--- class: 1.0
+|   |   |   |--- tcho_mean >  2.97
+|   |   |   |   |--- class: 0.0
+
+===== fold 2 =====
+|--- ztt_mean <= 3.03
+|   |--- n_biopsies <= 1.50
+|   |   |--- che_min <= 5.50
+|   |   |   |--- che_min <= 1.50
+|   |   |   |   |--- class: 1.0
+|   |   |   |--- che_min >  1.50
+|   |   |   |   |--- class: 1.0
+|   |   |--- che_min >  5.50
+|   |   |   |--- gpt_mean <= 1.39
+|   |   |   |   |--- class: 0.0
+|   |   |   |--- gpt_mean >  1.39
+|   |   |   |   |--- class: 1.0
+|   |--- n_biopsies >  1.50
+|   |   |--- class: 0.0
+|--- ztt_mean >  3.03
+|   |--- che_max <= 5.50
+|   |   |--- class: 1.0
+|   |--- che_max >  5.50
+|   |   |--- age <= 4.50
+|   |   |   |--- tcho_mean <= 0.87
+|   |   |   |   |--- class: 0.0
+|   |   |   |--- tcho_mean >  0.87
+|   |   |   |   |--- class: 1.0
+|   |   |--- age >  4.50
+|   |   |   |--- tp_mean <= 0.63
+|   |   |   |   |--- class: 0.0
+|   |   |   |--- tp_mean >  0.63
+|   |   |   |   |--- class: 0.0
+
+===== fold 3 =====
+|--- che_min <= 5.50
+|   |--- n_biopsies <= 1.50
+|   |   |--- ztt_max <= 4.50
+|   |   |   |--- che_min <= 1.50
+|   |   |   |   |--- class: 1.0
+|   |   |   |--- che_min >  1.50
+|   |   |   |   |--- class: 1.0
+|   |   |--- ztt_max >  4.50
+|   |   |   |--- tp_mean <= 1.91
+|   |   |   |   |--- class: 1.0
+|   |   |   |--- tp_mean >  1.91
+|   |   |   |   |--- class: 0.0
+|   |--- n_biopsies >  1.50
+|   |   |--- class: 0.0
+|--- che_min >  5.50
+|   |--- age <= 2.50
+|   |   |--- gpt_mean <= 0.91
+|   |   |   |--- class: 0.0
+|   |   |--- gpt_mean >  0.91
+|   |   |   |--- n_exams <= 17.50
+|   |   |   |   |--- class: 1.0
+|   |   |   |--- n_exams >  17.50
+|   |   |   |   |--- class: 0.0
+|   |--- age >  2.50
+|   |   |--- got_max <= 3.50
+|   |   |   |--- tcho_mean <= 2.68
+|   |   |   |   |--- class: 0.0
+|   |   |   |--- tcho_mean >  2.68
+|   |   |   |   |--- class: 1.0
+|   |   |--- got_max >  3.50
+|   |   |   |--- n_exams <= 6.50
+|   |   |   |   |--- class: 1.0
+|   |   |   |--- n_exams >  6.50
+|   |   |   |   |--- class: 0.0
+
+===== fold 4 =====
+|--- che_min <= 5.50
+|   |--- n_biopsies <= 1.50
+|   |   |--- che_min <= 1.50
+|   |   |   |--- tcho_mean <= 1.40
+|   |   |   |   |--- class: 0.0
+|   |   |   |--- tcho_mean >  1.40
+|   |   |   |   |--- class: 1.0
+|   |   |--- che_min >  1.50
+|   |   |   |--- ztt_mean <= 4.66
+|   |   |   |   |--- class: 1.0
+|   |   |   |--- ztt_mean >  4.66
+|   |   |   |   |--- class: 0.0
+|   |--- n_biopsies >  1.50
+|   |   |--- class: 0.0
+|--- che_min >  5.50
+|   |--- age <= 4.50
+|   |   |--- got_mean <= 1.24
+|   |   |   |--- dbil_mean <= 0.35
+|   |   |   |   |--- class: 0.0
+|   |   |   |--- dbil_mean >  0.35
+|   |   |   |   |--- class: 0.0
+|   |   |--- got_mean >  1.24
+|   |   |   |--- tp_max <= 1.50
+|   |   |   |   |--- class: 1.0
+|   |   |   |--- tp_max >  1.50
+|   |   |   |   |--- class: 0.0
+|   |--- age >  4.50
+|   |   |--- got_max <= 3.50
+|   |   |   |--- tcho_min <= 1.50
+|   |   |   |   |--- class: 0.0
+|   |   |   |--- tcho_min >  1.50
+|   |   |   |   |--- class: 0.0
+|   |   |--- got_max >  3.50
+|   |   |   |--- class: 1.0

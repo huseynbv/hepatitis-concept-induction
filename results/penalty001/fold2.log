@@ -1,0 +1,51 @@
+DL-Learner command line interface
+Initializing component 'ks' of type OWL File ...
+... initialized component 'ks' in 0ms. Status: OK
+Initializing component 'reasoner' of type closed world reasoner ...
+Loaded reasoner: Pellet (com.clarkparsia.pellet.owlapiv3.PelletReasoner)
+Materializing TBox...
+materialising concepts
+[.....] 0%[.....] 5%[.....] 10%[.....] 15%[=....] 20%materialising object properties ...
+[=....] 25%[=....] 30%materialising datatype properties
+[=....] 35%[==...] 40%[==...] 45%[==...] 50%[==...] 55%[===..] 60%[===..] 65%[===..] 70%[===..] 75%[====.] 80%[====.] 85%[====.] 90%[====.] 95%...TBox materialised in 1663 ms.
+... initialized component 'reasoner' in 7s 721ms. Status: OK
+Initializing component 'op' of type rho refinement operator ...
+... initialized component 'op' in 121ms. Status: OK
+Initializing component 'lp' of type PosNegLPStandard ...
+... initialized component 'lp' in 1ms. Status: OK
+Initializing component 'h' of type OEHeuristicRuntime ...
+... initialized component 'h' in 0ms. Status: OK
+Initializing component 'alg' of type CELOE ...
+... initialized component 'alg' in 2ms. Status: OK
+Running algorithm instance "alg" (CELOE)
+start class:Thing
+more accurate (41.25%) class expression found after 30ms: Thing
+more accurate (51.25%) class expression found after 114ms: not (Sex1)
+more accurate (56.50%) class expression found after 3s338ms: (not (Sex1)) and (age some integer[<= 5])
+more accurate (57.00%) class expression found after 4s819ms: (not (Sex1)) and (hasBiopsy max 3 Thing) and (age some integer[<= 5])
+more accurate (57.75%) class expression found after 4s839ms: (not (Sex1)) and (hasBiopsy max 2 Thing) and (age some integer[<= 5])
+more accurate (60.75%) class expression found after 4s862ms: (not (Sex1)) and (hasBiopsy max 1 Thing) and (age some integer[<= 5])
+more accurate (61.25%) class expression found after 23s97ms: (not (Sex1)) and (hasBiopsy some (fibros some integer[>= 1])) and (hasBiopsy max 1 Thing) and (age some integer[<= 5])
+more accurate (62.75%) class expression found after 23s116ms: (not (Sex1)) and (hasBiopsy some (activity some integer[<= 3])) and (hasBiopsy max 1 Thing) and (age some integer[<= 5])
+Algorithm terminated successfully (time: 60s 0ms, 11860 descriptions tested, 4298 nodes in the search tree).
+
+number of retrievals: 12116
+retrieval reasoning time: 56s 963ms ( 4ms per retrieval)
+number of instance checks: 51 (0 multiple)
+instance check reasoning time: 0ms ( 0ms per instance check)
+(complex) subsumption checks: 1140 (0 multiple)
+subsumption reasoning time: 146ms ( 0ms per subsumption check)
+overall reasoning time: 57s 111ms
+
+solutions:
+1: Sex0 and (hasBiopsy some (activity some integer[<= 3])) and (hasBiopsy max 1 Thing) and (age some integer[<= 5]) (pred. acc.: 62.75%, F-measure: 61.89%)
+2: (not (Sex1)) and (hasBiopsy some (activity some integer[<= 3])) and (hasBiopsy max 1 Thing) and (age some integer[<= 5]) (pred. acc.: 62.75%, F-measure: 61.89%)
+3: (not (Sex1)) and (hasBiopsy some (activity some integer[<= 3])) and (hasBiopsy max 1 (fibros some integer[<= 4])) and (age some integer[<= 5]) (pred. acc.: 62.75%, F-measure: 61.89%)
+4: (not (Sex1)) and (hasBiopsy some (activity some integer[<= 3])) and (hasBiopsy max 1 (fibros some integer[>= 0])) and (age some integer[<= 5]) (pred. acc.: 62.75%, F-measure: 61.89%)
+5: (not (Sex1)) and (hasBiopsy some (activity some integer[<= 3])) and (hasBiopsy max 1 (activity some integer[<= 4])) and (age some integer[<= 5]) (pred. acc.: 62.75%, F-measure: 61.89%)
+6: (not (Sex1)) and (hasBiopsy some (activity some integer[<= 3])) and (hasBiopsy max 1 (activity some integer[>= 0])) and (age some integer[<= 5]) (pred. acc.: 62.75%, F-measure: 61.89%)
+7: (not (Sex1)) and (hasBiopsy some (activity some integer[<= 3])) and (hasBiopsy max 1 (fibros some integer[>= 1])) and (age some integer[<= 5]) (pred. acc.: 62.25%, F-measure: 61.58%)
+8: (not (Sex1)) and (hasBiopsy some (activity some integer[<= 3])) and (hasBiopsy max 1 (activity some integer[>= 1])) and (age some integer[<= 5]) (pred. acc.: 62.00%, F-measure: 61.42%)
+9: (not (Sex1)) and (hasBiopsy some (fibros some integer[>= 1])) and (hasBiopsy max 1 Thing) and (age some integer[<= 5]) (pred. acc.: 61.25%, F-measure: 60.96%)
+10: (not (Sex1)) and (hasBiopsy some (activity some integer[<= 3])) and (hasBiopsy max 1 (fibros some integer[<= 3])) and (age some integer[<= 5]) (pred. acc.: 61.25%, F-measure: 60.96%)
+

@@ -1,0 +1,22 @@
+wrote conf/penalty001/fold0.conf
+wrote conf/penalty001/fold1.conf
+wrote conf/penalty001/fold2.conf
+wrote conf/penalty001/fold3.conf
+wrote conf/penalty001/fold4.conf
+ fold                                                                                                          concept  length  train_acc  test_acc  test_prec  test_rec  test_f1  concepts_tested  search_time_s
+    0 Sex0 and (hasBiopsy some (activity some integer[<= 3])) and (hasBiopsy max 1 Thing) and (age some integer[<= 5])      16      0.662      0.69      0.600     0.786    0.680            13000         60.004
+    1                                                                           hasExam max 4 (ztt some integer[>= 3])       6      0.698      0.66      0.578     0.634    0.605            13407         60.001
+    2 Sex0 and (hasBiopsy some (activity some integer[<= 3])) and (hasBiopsy max 1 Thing) and (age some integer[<= 5])      16      0.685      0.60      0.509     0.659    0.574            11860         60.000
+    3                                                    Sex0 and (hasBiopsy max 1 Thing) and (age some integer[<= 5])      10      0.642      0.69      0.593     0.780    0.674            14891         60.000
+    4    Sex0 and (hasExam some ((tcho some integer[>= 1]) and (ztt some integer[<= 4]))) and (age some integer[<= 5])      15      0.628      0.53      0.446     0.610    0.515            17514         60.000
+
+mean ± std over folds:
+  train_acc            0.663 ± 0.029
+  train_f1             0.635 ± 0.022
+  test_acc             0.634 ± 0.069
+  test_prec            0.545 ± 0.066
+  test_rec             0.694 ± 0.083
+  test_f1              0.610 ± 0.069
+  length              12.600 ± 4.450
+  search_time_s       60.001 ± 0.002
+  concepts_tested  14134.400 ± 2178.475

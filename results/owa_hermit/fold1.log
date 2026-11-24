@@ -1,0 +1,31 @@
+DL-Learner command line interface
+Initializing component 'ks' of type OWL File ...
+... initialized component 'ks' in 0ms. Status: OK
+Initializing component 'reasoner' of type OWL API Reasoner ...
+Loaded reasoner: HermiT (org.semanticweb.HermiT.Reasoner)
+... initialized component 'reasoner' in 2s 754ms. Status: OK
+Initializing component 'op' of type rho refinement operator ...
+... initialized component 'op' in 739ms. Status: OK
+Initializing component 'lp' of type PosNegLPStandard ...
+... initialized component 'lp' in 1ms. Status: OK
+Initializing component 'h' of type OEHeuristicRuntime ...
+... initialized component 'h' in 0ms. Status: OK
+Initializing component 'alg' of type CELOE ...
+... initialized component 'alg' in 1ms. Status: OK
+Running algorithm instance "alg" (CELOE)
+start class:Thing
+more accurate (41.25%) class expression found after 44ms: Thing
+more accurate (48.75%) class expression found after 85ms: Sex0
+Algorithm terminated successfully (time: 926s 135ms, 8 descriptions tested, 5 nodes in the search tree).
+
+number of retrievals: 13
+retrieval reasoning time: 926s 84ms ( 71s 237ms per retrieval)
+overall reasoning time: 926s 136ms
+
+solutions:
+1: Sex0 (pred. acc.: 48.75%, F-measure: 54.95%)
+2: Thing (pred. acc.: 41.25%, F-measure: 58.41%)
+3: Patient (pred. acc.: 41.25%, F-measure: 58.41%)
+4: not (Exam) (pred. acc.: 41.25%, F-measure: 58.41%)
+5: not (Biopsy) (pred. acc.: 41.25%, F-measure: 58.41%)
+

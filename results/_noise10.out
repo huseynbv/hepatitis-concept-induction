@@ -1,0 +1,22 @@
+wrote conf/noise10/fold0.conf
+wrote conf/noise10/fold1.conf
+wrote conf/noise10/fold2.conf
+wrote conf/noise10/fold3.conf
+wrote conf/noise10/fold4.conf
+ fold                                                               concept  length  train_acc  test_acc  test_prec  test_rec  test_f1  concepts_tested  search_time_s
+    0  hasExam some ((ttt some integer[>= 2]) and (ztt some integer[<= 3]))       9      0.600      0.59      0.507     0.881    0.643            19402         60.000
+    1  hasExam some ((ttt some integer[>= 2]) and (ztt some integer[<= 3]))       9      0.598      0.60      0.507     0.902    0.649            20103         60.002
+    2 hasExam some ((tcho some integer[>= 1]) and (ztt some integer[<= 3]))       9      0.578      0.66      0.551     0.927    0.691            19777         60.002
+    3  hasExam some ((ttt some integer[>= 2]) and (ztt some integer[<= 3]))       9      0.608      0.56      0.482     0.976    0.645            19862         60.005
+    4  hasExam some ((ttt some integer[>= 2]) and (ztt some integer[<= 3]))       9      0.610      0.55      0.474     0.902    0.622            20455         60.000
+
+mean ± std over folds:
+  train_acc            0.598 ± 0.013
+  train_f1             0.654 ± 0.009
+  test_acc             0.592 ± 0.043
+  test_prec            0.504 ± 0.030
+  test_rec             0.918 ± 0.036
+  test_f1              0.650 ± 0.025
+  length               9.000 ± 0.000
+  search_time_s       60.002 ± 0.002
+  concepts_tested  19919.800 ± 391.104

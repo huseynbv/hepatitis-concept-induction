@@ -1,0 +1,54 @@
+DL-Learner command line interface
+Initializing component 'ks' of type OWL File ...
+... initialized component 'ks' in 0ms. Status: OK
+Initializing component 'reasoner' of type closed world reasoner ...
+Loaded reasoner: Pellet (com.clarkparsia.pellet.owlapiv3.PelletReasoner)
+Materializing TBox...
+materialising concepts
+[.....] 0%[.....] 5%[.....] 10%[.....] 15%[=....] 20%materialising object properties ...
+[=....] 25%[=....] 30%materialising datatype properties
+[=....] 35%[==...] 40%[==...] 45%[==...] 50%[==...] 55%[===..] 60%[===..] 65%[===..] 70%[===..] 75%[====.] 80%[====.] 85%[====.] 90%[====.] 95%...TBox materialised in 1345 ms.
+... initialized component 'reasoner' in 7s 756ms. Status: OK
+Initializing component 'op' of type rho refinement operator ...
+... initialized component 'op' in 239ms. Status: OK
+Initializing component 'lp' of type PosNegLPStandard ...
+... initialized component 'lp' in 1ms. Status: OK
+Initializing component 'h' of type OEHeuristicRuntime ...
+... initialized component 'h' in 0ms. Status: OK
+Initializing component 'alg' of type CELOE ...
+... initialized component 'alg' in 3ms. Status: OK
+Running algorithm instance "alg" (CELOE)
+start class:Thing
+more accurate (41.25%) class expression found after 26ms: Thing
+more accurate (50.75%) class expression found after 98ms: not (Sex1)
+more accurate (55.00%) class expression found after 1s628ms: Sex0 and (age some integer[<= 5])
+more accurate (60.50%) class expression found after 8s836ms: Sex0 and (hasExam some (ztt some integer[<= 3]))
+more accurate (62.25%) class expression found after 9s402ms: Sex0 and (hasExam some (ztt some integer[>= 1 , <= 3]))
+more accurate (62.50%) class expression found after 9s451ms: Sex0 and (hasExam some ((ttt some integer[>= 1]) and (ztt some integer[<= 3])))
+more accurate (63.50%) class expression found after 10s36ms: Sex0 and (hasExam some (ztt some integer[<= 3])) and (hasBiopsy max 1 Thing)
+more accurate (69.00%) class expression found after 48s590ms: hasExam max 4 (ztt some integer[>= 3])
+more accurate (69.25%) class expression found after 53s479ms: hasExam max 4 ((tcho some integer[<= 2]) and (ztt some integer[>= 3]))
+more accurate (70.50%) class expression found after 53s520ms: hasExam max 3 ((tcho some integer[<= 2]) and (ztt some integer[>= 3]))
+more accurate (74.25%) class expression found after 54s28ms: hasExam max 1 ((tcho some integer[<= 2]) and (ztt some integer[>= 4]))
+Algorithm terminated successfully (time: 60s 5ms, 14760 descriptions tested, 7183 nodes in the search tree).
+
+number of retrievals: 15109
+retrieval reasoning time: 55s 998ms ( 3ms per retrieval)
+number of instance checks: 128 (0 multiple)
+instance check reasoning time: 1ms ( 0ms per instance check)
+(complex) subsumption checks: 1126 (0 multiple)
+subsumption reasoning time: 184ms ( 0ms per subsumption check)
+overall reasoning time: 56s 183ms
+
+solutions:
+1: hasExam max 1 ((tcho some integer[<= 2]) and (ztt some integer[>= 4])) (pred. acc.: 74.25%, F-measure: 70.99%)
+2: Patient and (hasExam max 1 ((tcho some integer[<= 2]) and (ztt some integer[>= 4]))) (pred. acc.: 74.25%, F-measure: 70.99%)
+3: (not (Exam)) and (hasExam max 1 ((tcho some integer[<= 2]) and (ztt some integer[>= 4]))) (pred. acc.: 74.25%, F-measure: 70.99%)
+4: (not (Biopsy)) and (hasExam max 1 ((tcho some integer[<= 2]) and (ztt some integer[>= 4]))) (pred. acc.: 74.25%, F-measure: 70.99%)
+5: ((not (Exam)) and (hasExam max 1 ((tcho some integer[<= 2]) and (ztt some integer[>= 4])))) or (not (Patient)) (pred. acc.: 74.25%, F-measure: 70.99%)
+6: ((not (Biopsy)) and (hasExam max 1 ((tcho some integer[<= 2]) and (ztt some integer[>= 4])))) or (not (Patient)) (pred. acc.: 74.25%, F-measure: 70.99%)
+7: hasExam max 1 ((che some integer[<= 7]) and (ztt some integer[>= 4])) (pred. acc.: 72.50%, F-measure: 68.02%)
+8: Patient and (hasExam max 1 ((che some integer[<= 7]) and (ztt some integer[>= 4]))) (pred. acc.: 72.50%, F-measure: 68.02%)
+9: hasExam max 1 ((gpt some integer[<= 2]) and (ztt some integer[>= 4])) (pred. acc.: 72.25%, F-measure: 67.83%)
+10: hasExam max 1 ((tcho some integer[<= 1]) and (ztt some integer[>= 4])) (pred. acc.: 71.50%, F-measure: 70.77%)
+

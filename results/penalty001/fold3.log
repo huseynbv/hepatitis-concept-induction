@@ -1,0 +1,49 @@
+DL-Learner command line interface
+Initializing component 'ks' of type OWL File ...
+... initialized component 'ks' in 0ms. Status: OK
+Initializing component 'reasoner' of type closed world reasoner ...
+Loaded reasoner: Pellet (com.clarkparsia.pellet.owlapiv3.PelletReasoner)
+Materializing TBox...
+materialising concepts
+[.....] 0%[.....] 5%[.....] 10%[.....] 15%[=....] 20%materialising object properties ...
+[=....] 25%[=....] 30%materialising datatype properties
+[=....] 35%[==...] 40%[==...] 45%[==...] 50%[==...] 55%[===..] 60%[===..] 65%[===..] 70%[===..] 75%[====.] 80%[====.] 85%[====.] 90%[====.] 95%...TBox materialised in 1374 ms.
+... initialized component 'reasoner' in 7s 734ms. Status: OK
+Initializing component 'op' of type rho refinement operator ...
+... initialized component 'op' in 124ms. Status: OK
+Initializing component 'lp' of type PosNegLPStandard ...
+... initialized component 'lp' in 1ms. Status: OK
+Initializing component 'h' of type OEHeuristicRuntime ...
+... initialized component 'h' in 0ms. Status: OK
+Initializing component 'alg' of type CELOE ...
+... initialized component 'alg' in 9ms. Status: OK
+Running algorithm instance "alg" (CELOE)
+start class:Thing
+more accurate (41.25%) class expression found after 57ms: Thing
+more accurate (50.75%) class expression found after 159ms: not (Sex1)
+more accurate (55.00%) class expression found after 3s410ms: (not (Sex1)) and (age some integer[<= 5])
+more accurate (55.50%) class expression found after 4s350ms: (not (Sex1)) and (hasBiopsy max 3 Thing) and (age some integer[<= 5])
+more accurate (56.00%) class expression found after 4s367ms: (not (Sex1)) and (hasBiopsy max 2 Thing) and (age some integer[<= 5])
+more accurate (59.25%) class expression found after 4s384ms: (not (Sex1)) and (hasBiopsy max 1 Thing) and (age some integer[<= 5])
+Algorithm terminated successfully (time: 60s 0ms, 14891 descriptions tested, 5412 nodes in the search tree).
+
+number of retrievals: 15092
+retrieval reasoning time: 56s 580ms ( 3ms per retrieval)
+number of instance checks: 42 (0 multiple)
+instance check reasoning time: 0ms ( 0ms per instance check)
+(complex) subsumption checks: 631 (0 multiple)
+subsumption reasoning time: 104ms ( 0ms per subsumption check)
+overall reasoning time: 56s 684ms
+
+solutions:
+1: Sex0 and (hasBiopsy max 1 Thing) and (age some integer[<= 5]) (pred. acc.: 59.25%, F-measure: 58.73%)
+2: (not (Sex1)) and (hasBiopsy max 1 Thing) and (age some integer[<= 5]) (pred. acc.: 59.25%, F-measure: 58.73%)
+3: (not (Sex1)) and (hasBiopsy max 1 Thing) and (age some integer[>= 0 , <= 5]) (pred. acc.: 59.25%, F-measure: 58.73%)
+4: Sex0 and (hasBiopsy max 1 (activity some integer[<= 4])) and (age some integer[<= 5]) (pred. acc.: 59.25%, F-measure: 58.73%)
+5: Sex0 and (hasBiopsy max 1 (activity some integer[>= 0])) and (age some integer[<= 5]) (pred. acc.: 59.25%, F-measure: 58.73%)
+6: (not (Sex1)) and (hasBiopsy max 1 (fibros some integer[<= 4])) and (age some integer[<= 5]) (pred. acc.: 59.25%, F-measure: 58.73%)
+7: (not (Sex1)) and (hasBiopsy max 1 (fibros some integer[>= 0])) and (age some integer[<= 5]) (pred. acc.: 59.25%, F-measure: 58.73%)
+8: (not (Sex1)) and (hasBiopsy max 1 (activity some integer[<= 4])) and (age some integer[<= 5]) (pred. acc.: 59.25%, F-measure: 58.73%)
+9: (not (Sex1)) and (hasBiopsy max 1 (activity some integer[>= 0])) and (age some integer[<= 5]) (pred. acc.: 59.25%, F-measure: 58.73%)
+10: (not (Sex1)) and (hasBiopsy some Biopsy) and (hasBiopsy max 1 Thing) and (age some integer[<= 5]) (pred. acc.: 59.25%, F-measure: 58.73%)
+

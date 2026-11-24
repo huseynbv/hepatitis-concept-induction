@@ -1,0 +1,22 @@
+wrote conf/enc_classes/fold0.conf
+wrote conf/enc_classes/fold1.conf
+wrote conf/enc_classes/fold2.conf
+wrote conf/enc_classes/fold3.conf
+wrote conf/enc_classes/fold4.conf
+ fold                                               concept  length  train_acc  test_acc  test_prec  test_rec  test_f1  concepts_tested  search_time_s
+    0      AGE_1 or (hasExam some (CHE_5 and (not (TP_3))))       8      0.780      0.75      0.718     0.667    0.691            33567         60.000
+    1      AGE_4 or (hasExam some (CHE_5 and (not (TP_3))))       8      0.778      0.68      0.629     0.537    0.579            32468         60.002
+    2      AGE_1 or (hasExam some (CHE_5 and (not (TP_3))))       8      0.770      0.79      0.833     0.610    0.704            34289         60.000
+    3 AGE_1 or (hasExam some (CHE_5 and (ALB_1 or TBIL_1)))       9      0.752      0.74      0.674     0.707    0.690            36158         60.000
+    4        hasExam some ((not (CHE_6)) and (not (CHE_7)))       7      0.712      0.72      0.607     0.902    0.725            36629         60.001
+
+mean ± std over folds:
+  train_acc            0.758 ± 0.028
+  train_f1             0.712 ± 0.018
+  test_acc             0.736 ± 0.040
+  test_prec            0.692 ± 0.090
+  test_rec             0.685 ± 0.138
+  test_f1              0.678 ± 0.057
+  length               8.000 ± 0.707
+  search_time_s       60.001 ± 0.001
+  concepts_tested  34622.200 ± 1750.070

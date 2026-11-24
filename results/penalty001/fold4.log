@@ -1,0 +1,52 @@
+DL-Learner command line interface
+Initializing component 'ks' of type OWL File ...
+... initialized component 'ks' in 1ms. Status: OK
+Initializing component 'reasoner' of type closed world reasoner ...
+Loaded reasoner: Pellet (com.clarkparsia.pellet.owlapiv3.PelletReasoner)
+Materializing TBox...
+materialising concepts
+[.....] 0%[.....] 5%[.....] 10%[.....] 15%[=....] 20%materialising object properties ...
+[=....] 25%[=....] 30%materialising datatype properties
+[=....] 35%[==...] 40%[==...] 45%[==...] 50%[==...] 55%[===..] 60%[===..] 65%[===..] 70%[===..] 75%[====.] 80%[====.] 85%[====.] 90%[====.] 95%...TBox materialised in 1185 ms.
+... initialized component 'reasoner' in 7s 840ms. Status: OK
+Initializing component 'op' of type rho refinement operator ...
+... initialized component 'op' in 262ms. Status: OK
+Initializing component 'lp' of type PosNegLPStandard ...
+... initialized component 'lp' in 2ms. Status: OK
+Initializing component 'h' of type OEHeuristicRuntime ...
+... initialized component 'h' in 0ms. Status: OK
+Initializing component 'alg' of type CELOE ...
+... initialized component 'alg' in 2ms. Status: OK
+Running algorithm instance "alg" (CELOE)
+start class:Thing
+more accurate (41.25%) class expression found after 31ms: Thing
+more accurate (52.50%) class expression found after 99ms: not (Sex1)
+more accurate (57.50%) class expression found after 2s641ms: (not (Sex1)) and (age some integer[<= 5])
+more accurate (58.50%) class expression found after 4s82ms: (not (Sex1)) and (hasBiopsy max 2 Thing) and (age some integer[<= 5])
+more accurate (60.50%) class expression found after 4s97ms: (not (Sex1)) and (hasBiopsy max 1 Thing) and (age some integer[<= 5])
+more accurate (61.25%) class expression found after 13s150ms: (not (Sex1)) and (hasExam some (ztt some integer[<= 4])) and (age some integer[<= 5])
+more accurate (61.50%) class expression found after 14s387ms: (not (Sex1)) and (hasExam some ((ttt some integer[>= 1]) and (ztt some integer[<= 4]))) and (age some integer[<= 5])
+more accurate (62.25%) class expression found after 14s433ms: (not (Sex1)) and (hasExam some ((ttt some integer[>= 2]) and (ztt some integer[<= 4]))) and (age some integer[<= 5])
+more accurate (62.75%) class expression found after 14s559ms: (not (Sex1)) and (hasExam some ((tcho some integer[>= 1]) and (ztt some integer[<= 4]))) and (age some integer[<= 5])
+Algorithm terminated successfully (time: 60s 0ms, 17514 descriptions tested, 5520 nodes in the search tree).
+
+number of retrievals: 17772
+retrieval reasoning time: 56s 283ms ( 3ms per retrieval)
+number of instance checks: 37 (0 multiple)
+instance check reasoning time: 0ms ( 0ms per instance check)
+(complex) subsumption checks: 1202 (0 multiple)
+subsumption reasoning time: 157ms ( 0ms per subsumption check)
+overall reasoning time: 56s 441ms
+
+solutions:
+1: Sex0 and (hasExam some ((tcho some integer[>= 1]) and (ztt some integer[<= 4]))) and (age some integer[<= 5]) (pred. acc.: 62.75%, F-measure: 60.89%)
+2: (not (Sex1)) and (hasExam some ((tcho some integer[>= 1]) and (ztt some integer[<= 4]))) and (age some integer[<= 5]) (pred. acc.: 62.75%, F-measure: 60.89%)
+3: (not (Sex1)) and (hasExam some ((ttt some integer[>= 2]) and (ztt some integer[<= 4]))) and (age some integer[<= 5]) (pred. acc.: 62.25%, F-measure: 60.98%)
+4: (not (Sex1)) and (hasExam some ((tbil some integer[>= 1]) and (ztt some integer[<= 4]))) and (age some integer[<= 5]) (pred. acc.: 62.00%, F-measure: 60.62%)
+5: (not (Sex1)) and (hasExam some ((ttt some integer[>= 1]) and (ztt some integer[<= 4]))) and (age some integer[<= 5]) (pred. acc.: 61.50%, F-measure: 60.51%)
+6: (not (Sex1)) and (hasExam some ((che some integer[>= 2]) and (ztt some integer[<= 4]))) and (age some integer[<= 5]) (pred. acc.: 61.50%, F-measure: 60.51%)
+7: Sex0 and (hasExam some (ztt some integer[<= 4])) and (age some integer[<= 5]) (pred. acc.: 61.25%, F-measure: 60.36%)
+8: (not (Sex1)) and (hasExam some (ztt some integer[<= 4])) and (age some integer[<= 5]) (pred. acc.: 61.25%, F-measure: 60.36%)
+9: (not (Sex1)) and (hasExam some ((tcho some integer[>= 0]) and (ztt some integer[<= 4]))) and (age some integer[<= 5]) (pred. acc.: 61.25%, F-measure: 60.36%)
+10: (not (Sex1)) and (hasExam some ((tbil some integer[>= 0]) and (ztt some integer[<= 4]))) and (age some integer[<= 5]) (pred. acc.: 61.25%, F-measure: 60.36%)
+

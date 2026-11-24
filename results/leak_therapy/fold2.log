@@ -1,0 +1,48 @@
+DL-Learner command line interface
+Initializing component 'ks' of type OWL File ...
+... initialized component 'ks' in 1ms. Status: OK
+Initializing component 'reasoner' of type closed world reasoner ...
+Loaded reasoner: Pellet (com.clarkparsia.pellet.owlapiv3.PelletReasoner)
+Materializing TBox...
+materialising concepts
+[.....] 0%[.....] 4%[.....] 8%[.....] 13%[.....] 17%[=....] 21%materialising object properties ...
+[=....] 26%[=....] 30%[=....] 34%materialising datatype properties
+[=....] 39%[==...] 43%[==...] 47%[==...] 52%[==...] 56%[===..] 60%[===..] 65%[===..] 69%[===..] 73%[===..] 78%[====.] 82%[====.] 86%[====.] 91%[====.] 95%...TBox materialised in 1505 ms.
+... initialized component 'reasoner' in 8s 189ms. Status: OK
+Initializing component 'op' of type rho refinement operator ...
+... initialized component 'op' in 184ms. Status: OK
+Initializing component 'lp' of type PosNegLPStandard ...
+... initialized component 'lp' in 1ms. Status: OK
+Initializing component 'h' of type OEHeuristicRuntime ...
+... initialized component 'h' in 0ms. Status: OK
+Initializing component 'alg' of type CELOE ...
+... initialized component 'alg' in 2ms. Status: OK
+Running algorithm instance "alg" (CELOE)
+start class:Thing
+more accurate (41.25%) class expression found after 29ms: Thing
+more accurate (51.25%) class expression found after 88ms: Sex0
+more accurate (80.00%) class expression found after 495ms: hasTherapy only Nothing
+more accurate (80.75%) class expression found after 9s761ms: (hasTherapy only Nothing) and (age some integer[<= 5])
+more accurate (81.75%) class expression found after 33s991ms: (hasTherapy only Nothing) and (hasBiopsy max 1 Thing)
+Algorithm terminated successfully (time: 60s 1ms, 17039 descriptions tested, 10436 nodes in the search tree).
+
+number of retrievals: 17445
+retrieval reasoning time: 55s 87ms ( 3ms per retrieval)
+number of instance checks: 11305 (0 multiple)
+instance check reasoning time: 8ms ( 0ms per instance check)
+(complex) subsumption checks: 866 (0 multiple)
+subsumption reasoning time: 125ms ( 0ms per subsumption check)
+overall reasoning time: 55s 221ms
+
+solutions:
+1: (hasTherapy only Nothing) and (hasBiopsy max 1 Thing) (pred. acc.: 81.75%, F-measure: 81.89%)
+2: (hasTherapy only Nothing) and (age some integer[<= 5]) (pred. acc.: 80.75%, F-measure: 80.00%)
+3: (hasTherapy only Nothing) and (hasBiopsy max 2 Thing) (pred. acc.: 80.75%, F-measure: 81.08%)
+4: (hasTherapy only Nothing) and (hasBiopsy max 3 Thing) (pred. acc.: 80.25%, F-measure: 80.68%)
+5: hasTherapy only Nothing (pred. acc.: 80.00%, F-measure: 80.49%)
+6: (hasTherapy only Nothing) (pred. acc.: 80.00%, F-measure: 80.49%)
+7: Patient and (hasTherapy only Nothing) (pred. acc.: 80.00%, F-measure: 80.49%)
+8: (not (Therapy)) and (hasTherapy only Nothing) (pred. acc.: 80.00%, F-measure: 80.49%)
+9: (not (Exam)) and (hasTherapy only Nothing) (pred. acc.: 80.00%, F-measure: 80.49%)
+10: (not (Biopsy)) and (hasTherapy only Nothing) (pred. acc.: 80.00%, F-measure: 80.49%)
+

@@ -1,0 +1,51 @@
+DL-Learner command line interface
+Initializing component 'ks' of type OWL File ...
+... initialized component 'ks' in 0ms. Status: OK
+Initializing component 'reasoner' of type closed world reasoner ...
+Loaded reasoner: Pellet (com.clarkparsia.pellet.owlapiv3.PelletReasoner)
+Materializing TBox...
+materialising concepts
+[.....] 0%[.....] 5%[.....] 10%[.....] 15%[=....] 20%materialising object properties ...
+[=....] 25%[=....] 30%materialising datatype properties
+[=....] 35%[==...] 40%[==...] 45%[==...] 50%[==...] 55%[===..] 60%[===..] 65%[===..] 70%[===..] 75%[====.] 80%[====.] 85%[====.] 90%[====.] 95%...TBox materialised in 1240 ms.
+... initialized component 'reasoner' in 7s 373ms. Status: OK
+Initializing component 'op' of type rho refinement operator ...
+... initialized component 'op' in 120ms. Status: OK
+Initializing component 'lp' of type PosNegLPStandard ...
+... initialized component 'lp' in 1ms. Status: OK
+Initializing component 'h' of type OEHeuristicRuntime ...
+... initialized component 'h' in 0ms. Status: OK
+Initializing component 'alg' of type CELOE ...
+... initialized component 'alg' in 2ms. Status: OK
+Running algorithm instance "alg" (CELOE)
+start class:Thing
+more accurate (41.25%) class expression found after 42ms: Thing
+more accurate (51.25%) class expression found after 104ms: not (Sex1)
+more accurate (56.50%) class expression found after 1s836ms: (not (Sex1)) and (age some integer[<= 5])
+more accurate (59.00%) class expression found after 10s285ms: Sex0 and (hasExam some (ztt some integer[<= 3]))
+more accurate (60.25%) class expression found after 10s793ms: Sex0 and (hasExam some (ztt some integer[>= 1 , <= 3]))
+more accurate (60.50%) class expression found after 10s832ms: Sex0 and (hasExam some ((ttt some integer[>= 1]) and (ztt some integer[<= 3])))
+more accurate (60.75%) class expression found after 10s856ms: Sex0 and (hasExam some ((ttt some integer[>= 2]) and (ztt some integer[<= 3])))
+more accurate (62.75%) class expression found after 34s293ms: Sex0 and (hasExam some (ztt some integer[<= 3])) and (hasBiopsy max 1 Thing)
+Algorithm terminated successfully (time: 60s 3ms, 18227 descriptions tested, 8612 nodes in the search tree).
+
+number of retrievals: 18530
+retrieval reasoning time: 55s 570ms ( 2ms per retrieval)
+number of instance checks: 173 (0 multiple)
+instance check reasoning time: 1ms ( 0ms per instance check)
+(complex) subsumption checks: 948 (0 multiple)
+subsumption reasoning time: 139ms ( 0ms per subsumption check)
+overall reasoning time: 55s 711ms
+
+solutions:
+1: Sex0 and (hasExam some (ztt some integer[<= 3])) and (hasBiopsy max 1 Thing) (pred. acc.: 62.75%, F-measure: 61.50%)
+2: Sex0 and (hasExam some (ztt some integer[<= 3])) and (hasBiopsy max 1 (fibros some integer[<= 4])) (pred. acc.: 62.75%, F-measure: 61.50%)
+3: Sex0 and (hasExam some (ztt some integer[<= 3])) and (hasBiopsy max 1 (fibros some integer[>= 0])) (pred. acc.: 62.75%, F-measure: 61.50%)
+4: Sex0 and (hasExam some (ztt some integer[<= 3])) and (hasBiopsy max 1 (activity some integer[<= 4])) (pred. acc.: 62.75%, F-measure: 61.50%)
+5: Sex0 and (hasExam some (ztt some integer[<= 3])) and (hasBiopsy max 1 (activity some integer[>= 0])) (pred. acc.: 62.75%, F-measure: 61.50%)
+6: Sex0 and (hasExam some (ztt some integer[<= 3])) and (hasBiopsy max 1 (fibros some integer[>= 1])) (pred. acc.: 62.25%, F-measure: 61.18%)
+7: Sex0 and (hasExam some (ztt some integer[<= 3])) and (hasBiopsy max 1 (activity some integer[>= 1])) (pred. acc.: 62.00%, F-measure: 61.03%)
+8: Sex0 and (hasExam some (ztt some integer[<= 3])) and (hasBiopsy max 1 (activity some integer[<= 3])) (pred. acc.: 61.50%, F-measure: 60.71%)
+9: Sex0 and (hasExam some (ztt some integer[<= 3])) and (hasBiopsy max 1 (fibros some integer[<= 3])) (pred. acc.: 61.25%, F-measure: 60.56%)
+10: Sex0 and (hasBiopsy max 1 Thing) and (age some integer[<= 5]) (pred. acc.: 60.75%, F-measure: 60.65%)
+
