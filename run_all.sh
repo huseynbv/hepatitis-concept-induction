@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
-# whole pipeline from the SQL dump to the comparison tables
-# needs the venv, java and DL-Learner in tools/dl-learner/dllearner-1.5.0 (or $DLLEARNER_HOME)
+# full pipeline; needs java and DL-Learner in tools/ (or $DLLEARNER_HOME)
 set -e
 cd "$(dirname "$0")"
 PY=${PYTHON:-python}

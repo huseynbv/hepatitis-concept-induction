@@ -1,7 +1,5 @@
-"""Flattens the relational tables into one row per patient: counts per relation,
-min/max/mean/mode per lab attribute, 'has a record with code k' flags, Bio
-aggregates and the duration code. Also writes the feature groups used by the
-baselines (flat, relational, no_artefact).
+"""One row per patient: counts, lab aggregates, 'any code k' flags, Bio aggregates, duration.
+Also writes the feature groups (flat, relational, no_artefact).
 """
 from pathlib import Path
 import json

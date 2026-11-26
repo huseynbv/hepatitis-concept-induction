@@ -1,30 +1,6 @@
-"""Build the Hepatitis OWL knowledge base from the processed CSV files.
-
-Modelling (see docs/dataset_analysis.md and docs/modelling_choices.md):
-  * dispat rows  -> Patient individuals        (patient_<m_id>)
-  * Bio rows     -> BioProfile individuals     (bio_<b_id>)
-  * indis rows   -> LabRecord individuals      (lab_<in_id>)
-  * inf rows     -> DurationRecord individuals (duration_<a_id>)
-  * rel11/12/13  -> object properties hasBioProfile / hasLabRecord / hasDurationRecord
-  * every categorical code -> a value class (e.g. GOT_3 subClassOf LabRecord) and
-    an integer data property (e.g. gotCode = 3) so ordinal thresholds are expressible
-  * the target column dispat.Type is NEVER written to the ontology; it is exported
-    separately to data/processed/labels.csv
-
-Variants (command-line flags):
-  --disjoint            add pairwise disjointness between the four entity classes and
-                        between sibling value classes of the same attribute (v2)
-  --closure             add per-patient role closure axioms (hasX only {linked...} and
-                        hasX max 0 when no link) so universal restrictions are entailed
-                        under the open-world assumption
-  --exclude-inf         drop DurationRecord individuals and hasDurationRecord links
-                        (artefact ablation)
-  --no-data-properties  drop the integer data properties (smaller ABox)
-  --train-only          keep only the patients listed in configs/folds/train.csv
-  --output PATH         output file (default ontology/hepatitis.owl)
-  --no-labels           do not (re)write data/processed/labels.csv
-
-Running without flags reproduces the original ontology/hepatitis.owl (v1).
+"""Builds the OWL knowledge base from the processed CSVs.
+Flags: --disjoint, --closure, --exclude-inf, --no-data-properties, --train-only, --output, --no-labels.
+Without flags it writes ontology/hepatitis.owl (v1) and labels.csv.
 """
 from pathlib import Path
 import argparse
@@ -89,7 +65,6 @@ def load_tables():
 
 
 def restrict_to_patients(t, keep_ids):
-    """Keep only the given patients and the records reachable from them."""
     keep = set(keep_ids)
     t["patients"] = t["patients"][t["patients"]["m_id"].isin(keep)]
     t["rel_bio"] = t["rel_bio"][t["rel_bio"]["m_id"].isin(keep)]
@@ -150,7 +125,7 @@ def build(t, args):
                 prop.range = [int]
                 props[name] = prop
 
-        # Value classes, grouped by attribute so disjointness can be declared per group.
+        # value classes, one group per attribute
         groups = {}
 
         def value_group(prefix, parent, codes):
@@ -226,7 +201,7 @@ def build(t, args):
                 patient_map[int(row["m_id"])].hasDurationRecord.append(
                     dur_map[int(row["a_id"])])
 
-        # role closure, needed if 'only' should ever be entailed by a reasoner
+        # role closure, so 'only' can be entailed under OWA
         if args.closure:
             roles = [hasBioProfile, hasLabRecord] + ([hasDurationRecord] if include_inf else [])
             for ind in patient_map.values():

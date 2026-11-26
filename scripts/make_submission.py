@@ -1,4 +1,5 @@
-"""Zips what has to be handed in: report, ontologies, code, .conf files, results, docs."""
+"""Zips the files to hand in.
+"""
 from pathlib import Path
 import argparse
 import zipfile

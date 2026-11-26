@@ -1,6 +1,4 @@
-"""Descriptive statistics and figures for the report (class balance, records per
-patient, attribute distributions per class, the structural artefacts, Bio sharing).
-Everything goes to results/tables and results/figures.
+"""Tables and figures describing the data (results/tables, results/figures).
 """
 from pathlib import Path
 
@@ -127,7 +125,7 @@ def main():
     plt.close(fig)
     pd.DataFrame(rows).to_csv(TABLES / "class_conditional_patient.csv", index=False)
 
-    # 4. Bio attributes (link level: one row per patient-Bio link)
+    # 4. Bio attributes (per link)
     bl = r11.merge(bio, on="b_id").merge(pat[["m_id", "Type"]], on="m_id")
     rows = []
     fig, axes = plt.subplots(1, 2, figsize=(7, 2.8))
@@ -178,7 +176,7 @@ def main():
     ct = pd.crosstab(dl["dur"], dl["Type"]).reindex(columns=[0, 1], fill_value=0)
     ct.to_csv(TABLES / "class_conditional_duration.csv")
 
-    # 7. Structural artefacts: features that occur in exactly one class
+    # 7. features that occur in one class only
     pos_only = []
 
     def record(name, mask):

@@ -1,10 +1,5 @@
-"""Runs DL-Learner for each .conf in configs/dl-learner and parses the logs into
-results/tables (dl_runs, dl_solutions, dl_anytime). The JVM flags are needed
-because DL-Learner 1.5.0 was built for Java 8.
-
-  python src/run_dl_learner.py              all confs
-  python src/run_dl_learner.py --only L1_   subset by prefix
-  python src/run_dl_learner.py --parse-only re-parse existing logs
+"""Runs DL-Learner on every conf in configs/dl-learner and parses the logs into tables.
+Options: --only PREFIX..., --parse-only, --dl-learner PATH, --java PATH.
 """
 from pathlib import Path
 import argparse
@@ -107,7 +102,7 @@ def parse_log(run_id, text):
     if "Exception" in text and not sols:
         run["status"] = "error"
     if not sols and anytime:
-        # OCEL prints no solution list when the noise target isn't met
+        # OCEL: no solution list, keep best found
         last = anytime[-1]
         sols.append({"run_id": run_id, "rank": 1, "concept": last["concept"],
                      "train_acc": last["train_acc"], "train_f1": None,

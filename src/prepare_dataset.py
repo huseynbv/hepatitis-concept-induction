@@ -28,7 +28,7 @@ def extract_columns(sql, table):
 
 
 def parse_values(statement):
-    """Parse a basic SQL multi-row VALUES statement."""
+    # parse "(..),(..)" rows
     rows = []
     i = 0
 

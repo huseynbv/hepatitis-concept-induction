@@ -1,5 +1,4 @@
-"""Sanity checks on the processed CSVs, the labels file and the train/test split.
-Exits with 1 if anything fails.
+"""Integrity checks on the CSVs, labels and split. Exit 1 on failure.
 """
 from pathlib import Path
 import sys

@@ -1,5 +1,4 @@
-"""Majority, decision tree and random forest on the same split as DL-Learner, for
-the three feature groups. Hyperparameters by 5-fold CV on the training patients.
+"""Tree and forest baselines on the same split, three feature groups, CV-tuned on train.
 """
 from pathlib import Path
 import json

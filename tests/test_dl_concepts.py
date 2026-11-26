@@ -1,9 +1,4 @@
-"""The closed-world evaluator must give the same training accuracies DL-Learner
-reported for these concepts (CELOE on hepatitis_v2.owl, train split):
-  hasDurationRecord some DurationRecord                    79.50 % / F 78.87 %
-  Patient and (not (Age_4))                                62.00 %
-  (not (Age_0)) and (hasDurationRecord some DurationRecord) 79.25 %
-  Patient                                                  58.75 % / F 74.02 %
+"""The closed-world evaluator must reproduce DL-Learner's training accuracies (values from the logs).
 """
 from pathlib import Path
 import sys
@@ -58,7 +53,7 @@ def test_matches_dl_learner_training_accuracy():
 
 def test_closed_world_constructs():
     k = kb()
-    # closed world: 'only' holds for the 4 patients without lab records
+    # 'only' holds for the 4 patients without labs
     no_labs = {i for i in k.classes["Patient"] if i not in k.roles["hasLabRecord"]}
     assert len(no_labs) == 4
     assert no_labs <= k.extension(parse("hasLabRecord only Nothing"))

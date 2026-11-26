@@ -1,5 +1,4 @@
-"""Puts the DL-Learner and baseline results side by side (summary tables and the
-figures used in the report).
+"""Summary tables and comparison figures from the DL-Learner and baseline results.
 """
 from pathlib import Path
 

@@ -1,6 +1,4 @@
-"""Scores every learned concept on the training and test patients (closed world)
-and the best concept of each run with HermiT (open world) on v1 and v2 of the KB.
-Results: results/tables/concept_eval.csv and concept_owa.csv.
+"""Scores every learned concept on train/test (closed world) and the best one per run with HermiT.
 """
 from pathlib import Path
 import argparse
@@ -25,7 +23,7 @@ def example_sets():
 
 
 def owa_subprocess(kb_path, concept, timeout):
-    # separate process so a hard case can be killed after the timeout
+    # child process so it can time out
     import json
     import subprocess
     cmd = [sys.executable, str(ROOT / "src" / "dl_concepts.py"), "--owa", str(kb_path), concept]

@@ -1,6 +1,4 @@
-"""Writes one DL-Learner .conf per experiment in configs/experiments/grid.json.
-Positives/negatives are the training patients only. The language name maps to
-the rho operator switches (EL, ALC, ALCQ, ALCD, FULL).
+"""Writes one .conf per experiment in grid.json; examples are the training patients only.
 """
 from pathlib import Path
 import argparse
@@ -63,7 +61,7 @@ def render(exp, pos, neg, out_dir):
 // Experiment: {exp['id']}  (group: {exp.get('group', '-')})
 // KB: {exp['kb']} | algorithm: {alg} | language: {exp['language']} | time: {exp['time']}s
 // max_depth: {exp['max_depth']} | noise: {exp['noise']}% | expansion penalty: {exp['expansion_penalty']}
-// accuracy method: {exp['accuracy_method']} | P = {len(pos)} training Type-1 patients, N = {len(neg)} training Type-0 patients
+// accuracy method: {exp['accuracy_method']} | P = {len(pos)}, N = {len(neg)} (training split)
 
 prefixes = [ ("hep","{PREFIX}") ]
 
@@ -81,7 +79,7 @@ lp.type = "posNegStandard"
 lp.positiveExamples = {fmt_examples(pos)}
 lp.negativeExamples = {fmt_examples(neg)}
 
-// refinement operator (hypothesis language: {exp['language']})
+// operator ({exp['language']})
 op.type = "rho"
 {op_lines}
 

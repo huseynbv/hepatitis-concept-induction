@@ -1,9 +1,5 @@
-"""Parser and evaluators for the class expressions DL-Learner prints.
-
-Closed-world evaluation mimics DL-Learner's closed world reasoner (complement
-for negation, vacuous 'only', asserted successors for cardinalities and data
-values). Open-world evaluation adds the expression as an equivalent class and
-asks HermiT which individuals are entailed to belong to it.
+"""Parses DL-Learner class expressions and evaluates them closed-world (like DL-Learner)
+or open-world (HermiT via owlready2).
 """
 from __future__ import annotations
 
@@ -184,7 +180,7 @@ class ClosedWorldKB:
 
     def __init__(self, owl_path: Path):
         from owlready2 import World
-        # all KB variants have the same IRI, owlready would hand back the cached one
+        # own World: all KB files share one IRI
         self.world = World()
         self.onto = self.world.get_ontology("file://" + owl_path.resolve().as_posix()).load()
         self.individuals: Set[str] = set()
@@ -212,7 +208,7 @@ class ClosedWorldKB:
                     self.data[prop.name][ind.name] = list(vals)
 
     def _assert_class(self, cls, ind_name):
-        # also the named superclasses, like the materialised TBox in DL-Learner
+        # include superclasses (materialised TBox)
         stack = [cls]
         seen = set()
         while stack:
@@ -291,7 +287,7 @@ def metrics(predicted: Set[str], positives: Set[str], negatives: Set[str]) -> di
 
 def owa_instances(owl_path: Path, node: Node, reasoner: str = "hermit",
                   timeout: int = 600) -> Set[str]:
-    # loads a fresh copy, adds LearnedConcept == expr, lets the reasoner classify
+    # LearnedConcept == expr, then let the reasoner classify
     from owlready2 import (World, Thing, Not, And, Or, OneOf, ConstrainedDatatype,
                            sync_reasoner_hermit, sync_reasoner_pellet, types as owl_types)
     import owlready2
