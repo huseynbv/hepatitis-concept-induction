@@ -1,0 +1,3 @@
+Type,patients,lab_mean,lab_median,lab_max,lab_zero,bio_mean,bio_max,bio_ge2,dur_present
+0,206,8.42,7.0,21,2,1.0,1,0,0
+1,294,13.46,10.0,105,2,1.41,5,82,196

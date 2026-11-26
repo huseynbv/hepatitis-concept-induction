@@ -226,4 +226,5 @@ __marimo__/
 tools/
 *.zip
 *.tar.gz
-results/logs/
+results/logs/_*.txt
+!results/logs/*.log

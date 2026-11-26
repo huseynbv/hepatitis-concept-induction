@@ -1,0 +1,22 @@
+|--- dur_value <= -0.50
+|   |--- ztt_mean <= 3.03
+|   |   |--- n_bio <= 1.50
+|   |   |   |--- tcho_mode <= 0.50
+|   |   |   |   |--- weights: [4.00, 7.00] class: 1
+|   |   |   |--- tcho_mode >  0.50
+|   |   |   |   |--- weights: [121.00, 8.00] class: 0
+|   |   |--- n_bio >  1.50
+|   |   |   |--- weights: [0.00, 6.00] class: 1
+|   |--- ztt_mean >  3.03
+|   |   |--- che_mean <= 5.07
+|   |   |   |--- activity_min <= 2.50
+|   |   |   |   |--- weights: [12.00, 0.00] class: 0
+|   |   |   |--- activity_min >  2.50
+|   |   |   |   |--- weights: [3.00, 2.00] class: 0
+|   |   |--- che_mean >  5.07
+|   |   |   |--- age <= 4.50
+|   |   |   |   |--- weights: [16.00, 7.00] class: 0
+|   |   |   |--- age >  4.50
+|   |   |   |   |--- weights: [9.00, 52.00] class: 1
+|--- dur_value >  -0.50
+|   |--- weights: [0.00, 153.00] class: 1

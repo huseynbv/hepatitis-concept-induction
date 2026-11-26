@@ -1,0 +1,9 @@
+group,runs,best_test_f1,mean_test_f1,mean_length
+ablation,3,0.843,0.718,5.0
+algorithm,1,0.742,0.742,1.0
+depth,2,0.843,0.843,3.0
+extended,2,0.844,0.776,6.0
+heuristic,2,0.843,0.843,3.0
+language,5,0.843,0.841,3.8
+noise,4,0.843,0.808,4.5
+runtime,2,0.843,0.838,5.0

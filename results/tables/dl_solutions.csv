@@ -1,0 +1,216 @@
+run_id,rank,concept,train_acc,train_f1,length
+A1_FULL_noinf,1,Age_6 or (hasLabRecord min 2 ZTT_5),0.7475,0.773,5
+A1_FULL_noinf,2,hasLabRecord min 2 ZTT_5,0.74,0.7536,3
+A1_FULL_noinf,3,hasLabRecord some (ZTT_5 and (not (GPT_3))),0.7375,0.764,6
+A1_FULL_noinf,4,Age_6 or (hasLabRecord some ZTT_5),0.735,0.7754000000000001,5
+A1_FULL_noinf,5,hasLabRecord some (ZTT_5 and (not (TP_0))),0.735,0.7545999999999999,6
+A1_FULL_noinf,6,hasLabRecord some (ZTT_5 and (not (CHE_5))),0.735,0.7634000000000001,6
+A1_FULL_noinf,7,Age_2 or (hasLabRecord min 2 ZTT_5),0.735,0.7602,5
+A1_FULL_noinf,8,(not (Age_1)) and (hasLabRecord some ZTT_5),0.735,0.7602,6
+A1_FULL_noinf,9,hasLabRecord some (ZTT_5 and (not (GOT_4))),0.7325,0.7617,6
+A1_FULL_noinf,10,hasLabRecord some (ZTT_5 and (not (CHE_2))),0.7325,0.7617,6
+A2_ALC_noinf,1,hasLabRecord some (ZTT_5 and (not (GPT_3))),0.7375,0.764,6
+A2_ALC_noinf,2,Age_6 or (hasLabRecord some ZTT_5),0.735,0.7754000000000001,5
+A2_ALC_noinf,3,hasLabRecord some (ZTT_5 and (not (TP_0))),0.735,0.7545999999999999,6
+A2_ALC_noinf,4,hasLabRecord some (ZTT_5 and (not (CHE_5))),0.735,0.7634000000000001,6
+A2_ALC_noinf,5,(not (Age_1)) and (hasLabRecord some ZTT_5),0.735,0.7602,6
+A2_ALC_noinf,6,hasLabRecord some (ZTT_5 and (not (GOT_4))),0.7325,0.7617,6
+A2_ALC_noinf,7,hasLabRecord some (ZTT_5 and (not (CHE_2))),0.7325,0.7617,6
+A2_ALC_noinf,8,(not (Age_0)) and (hasLabRecord some ZTT_5),0.7325,0.7617,6
+A2_ALC_noinf,9,hasLabRecord some (ZTT_5 and (not (GOT_0))),0.73,0.76,6
+A2_ALC_noinf,10,hasLabRecord some (ZTT_5 and (not (CHE_9))),0.73,0.76,6
+A3_ALC_v1,1,hasDurationRecord some DurationRecord,0.795,0.7887000000000001,3
+A3_ALC_v1,2,(not (CHE_1)) and (hasDurationRecord some DurationRecord),0.795,0.7887000000000001,6
+A3_ALC_v1,3,(not (CHE_0)) and (hasDurationRecord some DurationRecord),0.795,0.7887000000000001,6
+A3_ALC_v1,4,(not (Activity_4)) and (hasDurationRecord some DurationRecord),0.795,0.7887000000000001,6
+A3_ALC_v1,5,(not (Activity_3)) and (hasDurationRecord some DurationRecord),0.795,0.7887000000000001,6
+A3_ALC_v1,6,(not (Activity_2)) and (hasDurationRecord some DurationRecord),0.795,0.7887000000000001,6
+A3_ALC_v1,7,(not (Activity_1)) and (hasDurationRecord some DurationRecord),0.795,0.7887000000000001,6
+A3_ALC_v1,8,(not (Activity_0)) and (hasDurationRecord some DurationRecord),0.795,0.7887000000000001,6
+A3_ALC_v1,9,(not (ALB_1)) and (hasDurationRecord some DurationRecord),0.795,0.7887000000000001,6
+A3_ALC_v1,10,(not (ALB_0)) and (hasDurationRecord some DurationRecord),0.795,0.7887000000000001,6
+D1_ALC_depth4,1,hasDurationRecord some DurationRecord,0.795,0.7887000000000001,3
+D1_ALC_depth4,2,Patient and (hasDurationRecord some DurationRecord),0.795,0.7887000000000001,5
+D1_ALC_depth4,3,hasDurationRecord some ((not (Duration_1)) or (not (Duration_4))),0.795,0.7887000000000001,7
+D1_ALC_depth4,4,hasDurationRecord some ((not (Duration_1)) or (not (Duration_3))),0.795,0.7887000000000001,7
+D1_ALC_depth4,5,hasDurationRecord some ((not (Duration_1)) or (not (Duration_2))),0.795,0.7887000000000001,7
+D1_ALC_depth4,6,hasDurationRecord some ((not (Duration_0)) or (not (Duration_4))),0.795,0.7887000000000001,7
+D1_ALC_depth4,7,hasDurationRecord some ((not (Duration_0)) or (not (Duration_3))),0.795,0.7887000000000001,7
+D1_ALC_depth4,8,hasDurationRecord some ((not (Duration_0)) or (not (Duration_2))),0.795,0.7887000000000001,7
+D1_ALC_depth4,9,hasDurationRecord some ((not (Duration_0)) or (not (Duration_1))),0.795,0.7887000000000001,7
+D1_ALC_depth4,10,(hasBioProfile some BioProfile) and (hasDurationRecord some DurationRecord),0.795,0.7887000000000001,7
+D2_ALC_depth12,1,hasDurationRecord some DurationRecord,0.795,0.7887000000000001,3
+D2_ALC_depth12,2,Patient and (hasDurationRecord some DurationRecord),0.795,0.7887000000000001,5
+D2_ALC_depth12,3,hasDurationRecord some ((not (Duration_1)) or (not (Duration_4))),0.795,0.7887000000000001,7
+D2_ALC_depth12,4,hasDurationRecord some ((not (Duration_1)) or (not (Duration_3))),0.795,0.7887000000000001,7
+D2_ALC_depth12,5,hasDurationRecord some ((not (Duration_1)) or (not (Duration_2))),0.795,0.7887000000000001,7
+D2_ALC_depth12,6,hasDurationRecord some ((not (Duration_0)) or (not (Duration_4))),0.795,0.7887000000000001,7
+D2_ALC_depth12,7,hasDurationRecord some ((not (Duration_0)) or (not (Duration_3))),0.795,0.7887000000000001,7
+D2_ALC_depth12,8,hasDurationRecord some ((not (Duration_0)) or (not (Duration_2))),0.795,0.7887000000000001,7
+D2_ALC_depth12,9,hasDurationRecord some ((not (Duration_0)) or (not (Duration_1))),0.795,0.7887000000000001,7
+D2_ALC_depth12,10,(hasBioProfile some BioProfile) and (hasDurationRecord some DurationRecord),0.795,0.7887000000000001,7
+H1_ALC_pen0.02,1,hasDurationRecord some DurationRecord,0.795,0.7887000000000001,3
+H1_ALC_pen0.02,2,Patient and (hasDurationRecord some DurationRecord),0.795,0.7887000000000001,5
+H1_ALC_pen0.02,3,hasDurationRecord some ((not (Duration_1)) or (not (Duration_4))),0.795,0.7887000000000001,7
+H1_ALC_pen0.02,4,hasDurationRecord some ((not (Duration_1)) or (not (Duration_3))),0.795,0.7887000000000001,7
+H1_ALC_pen0.02,5,hasDurationRecord some ((not (Duration_1)) or (not (Duration_2))),0.795,0.7887000000000001,7
+H1_ALC_pen0.02,6,hasDurationRecord some ((not (Duration_0)) or (not (Duration_4))),0.795,0.7887000000000001,7
+H1_ALC_pen0.02,7,hasDurationRecord some ((not (Duration_0)) or (not (Duration_3))),0.795,0.7887000000000001,7
+H1_ALC_pen0.02,8,hasDurationRecord some ((not (Duration_0)) or (not (Duration_2))),0.795,0.7887000000000001,7
+H1_ALC_pen0.02,9,hasDurationRecord some ((not (Duration_0)) or (not (Duration_1))),0.795,0.7887000000000001,7
+H1_ALC_pen0.02,10,(hasBioProfile some BioProfile) and (hasDurationRecord some DurationRecord),0.795,0.7887000000000001,7
+H2_ALC_pen0.3,1,hasDurationRecord some DurationRecord,0.795,0.7887000000000001,3
+H2_ALC_pen0.3,2,hasLabRecord some ZTT_5,0.7275,0.7583,3
+H2_ALC_pen0.3,3,hasLabRecord some (CHE_6 and ZTT_5),0.7275,0.7471,5
+H2_ALC_pen0.3,4,hasDurationRecord some (not (Duration_2)),0.7225,0.6908,4
+H2_ALC_pen0.3,5,hasDurationRecord some (not (Duration_1)),0.7225,0.6908,4
+H2_ALC_pen0.3,6,hasDurationRecord some (not (Duration_0)),0.7175,0.6835,4
+H2_ALC_pen0.3,7,hasDurationRecord some (not (Duration_4)),0.715,0.6798000000000001,4
+H2_ALC_pen0.3,8,hasDurationRecord some (not (Duration_3)),0.715,0.6798000000000001,4
+H2_ALC_pen0.3,9,hasLabRecord some (ALB_0 and ZTT_5),0.715,0.7421,5
+H2_ALC_pen0.3,10,hasLabRecord some (GPT_2 and ZTT_5),0.705,0.7094,5
+L1_EL_120s,1,(Age_5 and Sex_1) or (hasDurationRecord some DurationRecord),0.8025,0.8131999999999999,7
+L1_EL_120s,2,Age_6 or (hasDurationRecord some DurationRecord),0.8,0.8077,5
+L1_EL_120s,3,(Age_6 and Sex_0) or (hasDurationRecord some DurationRecord),0.8,0.8009999999999999,7
+L1_EL_120s,4,(Age_2 and Sex_1) or (hasDurationRecord some DurationRecord),0.7975,0.7939,7
+L1_EL_120s,5,hasDurationRecord some DurationRecord,0.795,0.7887000000000001,3
+L1_EL_120s,6,Patient and (hasDurationRecord some DurationRecord),0.795,0.7887000000000001,5
+L1_EL_120s,7,(Age_6 and Sex_1) or (hasDurationRecord some DurationRecord),0.795,0.7959999999999999,7
+L1_EL_120s,8,(hasBioProfile some BioProfile) and (hasDurationRecord some DurationRecord),0.795,0.7887000000000001,7
+L1_EL_120s,9,(Age_3 and Sex_1) or (hasDurationRecord some DurationRecord),0.7925,0.7898999999999999,7
+L1_EL_120s,10,(hasDurationRecord some DurationRecord) and (hasLabRecord some LabRecord),0.7925,0.7855,7
+L2_ALC_120s,1,hasDurationRecord some DurationRecord,0.795,0.7887000000000001,3
+L2_ALC_120s,2,Patient and (hasDurationRecord some DurationRecord),0.795,0.7887000000000001,5
+L2_ALC_120s,3,hasDurationRecord some ((not (Duration_1)) or (not (Duration_4))),0.795,0.7887000000000001,7
+L2_ALC_120s,4,hasDurationRecord some ((not (Duration_1)) or (not (Duration_3))),0.795,0.7887000000000001,7
+L2_ALC_120s,5,hasDurationRecord some ((not (Duration_1)) or (not (Duration_2))),0.795,0.7887000000000001,7
+L2_ALC_120s,6,hasDurationRecord some ((not (Duration_0)) or (not (Duration_4))),0.795,0.7887000000000001,7
+L2_ALC_120s,7,hasDurationRecord some ((not (Duration_0)) or (not (Duration_3))),0.795,0.7887000000000001,7
+L2_ALC_120s,8,hasDurationRecord some ((not (Duration_0)) or (not (Duration_2))),0.795,0.7887000000000001,7
+L2_ALC_120s,9,hasDurationRecord some ((not (Duration_0)) or (not (Duration_1))),0.795,0.7887000000000001,7
+L2_ALC_120s,10,(hasBioProfile some BioProfile) and (hasDurationRecord some DurationRecord),0.795,0.7887000000000001,7
+L3_ALCQ_120s,1,hasDurationRecord some DurationRecord,0.795,0.7887000000000001,3
+L3_ALCQ_120s,2,Patient and (hasDurationRecord some DurationRecord),0.795,0.7887000000000001,5
+L3_ALCQ_120s,3,hasDurationRecord some ((not (Duration_1)) or (not (Duration_4))),0.795,0.7887000000000001,7
+L3_ALCQ_120s,4,hasDurationRecord some ((not (Duration_1)) or (not (Duration_3))),0.795,0.7887000000000001,7
+L3_ALCQ_120s,5,hasDurationRecord some ((not (Duration_1)) or (not (Duration_2))),0.795,0.7887000000000001,7
+L3_ALCQ_120s,6,hasDurationRecord some ((not (Duration_0)) or (not (Duration_4))),0.795,0.7887000000000001,7
+L3_ALCQ_120s,7,hasDurationRecord some ((not (Duration_0)) or (not (Duration_3))),0.795,0.7887000000000001,7
+L3_ALCQ_120s,8,hasDurationRecord some ((not (Duration_0)) or (not (Duration_2))),0.795,0.7887000000000001,7
+L3_ALCQ_120s,9,hasDurationRecord some ((not (Duration_0)) or (not (Duration_1))),0.795,0.7887000000000001,7
+L3_ALCQ_120s,10,(hasBioProfile some BioProfile) and (hasDurationRecord some DurationRecord),0.795,0.7887000000000001,7
+L4_ALCD_120s,1,hasDurationRecord some DurationRecord,0.795,0.7887000000000001,3
+L4_ALCD_120s,2,hasDurationRecord some (durationCode some integer[<= 4]),0.795,0.7887000000000001,5
+L4_ALCD_120s,3,hasDurationRecord some (durationCode some integer[>= 0]),0.795,0.7887000000000001,5
+L4_ALCD_120s,4,Patient and (hasDurationRecord some DurationRecord),0.795,0.7887000000000001,5
+L4_ALCD_120s,5,hasDurationRecord some (Duration_0 or (durationCode some integer[>= 0])),0.795,0.7887000000000001,7
+L4_ALCD_120s,6,(hasDurationRecord some DurationRecord) and (sexCode some integer[<= 1]),0.795,0.7887000000000001,7
+L4_ALCD_120s,7,(hasDurationRecord some DurationRecord) and (sexCode some integer[>= 0]),0.795,0.7887000000000001,7
+L4_ALCD_120s,8,(hasDurationRecord some DurationRecord) and (ageCode some integer[<= 6]),0.795,0.7887000000000001,7
+L4_ALCD_120s,9,(hasDurationRecord some DurationRecord) and (ageCode some integer[>= 0]),0.795,0.7887000000000001,7
+L4_ALCD_120s,10,(hasBioProfile some BioProfile) and (hasDurationRecord some DurationRecord),0.795,0.7887000000000001,7
+L5_FULL_120s,1,hasDurationRecord some DurationRecord,0.795,0.7887000000000001,3
+L5_FULL_120s,2,hasDurationRecord some (durationCode some integer[<= 4]),0.795,0.7887000000000001,5
+L5_FULL_120s,3,hasDurationRecord some (durationCode some integer[>= 0]),0.795,0.7887000000000001,5
+L5_FULL_120s,4,(not (Age_0)) and (hasDurationRecord some DurationRecord),0.7925,0.7855,6
+L5_FULL_120s,5,(not (Age_1)) and (hasDurationRecord some DurationRecord),0.79,0.7824,6
+L5_FULL_120s,6,(not (Age_4)) and (hasDurationRecord some DurationRecord),0.785,0.7759999999999999,6
+L5_FULL_120s,7,(not (Age_2)) and (hasDurationRecord some DurationRecord),0.775,0.7631999999999999,6
+L5_FULL_120s,8,(not (Age_3)) and (hasDurationRecord some DurationRecord),0.7675,0.7533,6
+L5_FULL_120s,9,hasLabRecord min 2 ZTT_5,0.74,0.7536,3
+L5_FULL_120s,10,hasLabRecord some (ZTT_5 and (not (GPT_3))),0.7375,0.764,6
+N1_ALC_noise0,1,Patient and (Sex_0 or (not (Age_0))),0.5925,0.7425,6
+N1_ALC_noise0,2,Patient and ((not (Age_0)) or (not (Sex_1))),0.5925,0.7425,7
+N1_ALC_noise0,3,Patient,0.5875,0.7402,1
+N1_ALC_noise0,4,Patient,0.5875,0.7402,1
+N1_ALC_noise0,5,hasBioProfile some BioProfile,0.5875,0.7402,3
+N2_ALC_noise25,1,hasLabRecord some (CHE_6 and (not (ZTT_1))),0.725,0.797,6
+N2_ALC_noise25,2,hasLabRecord some (CHE_6 and (not (TP_1))),0.7025,0.7792,6
+N2_ALC_noise25,3,(not (Age_4)) and (hasLabRecord some CHE_6),0.7,0.7794,6
+N2_ALC_noise25,4,(not (Age_1)) and (hasLabRecord some CHE_6),0.6975,0.7796,6
+N2_ALC_noise25,5,hasLabRecord some (CHE_6 and (not (TCHO_2))),0.6925,0.7743000000000001,6
+N2_ALC_noise25,6,hasLabRecord some (CHE_6 and (not (TTT_2))),0.6875,0.7756000000000001,6
+N2_ALC_noise25,7,hasLabRecord some (CHE_6 and (not (ZTT_3))),0.685,0.775,6
+N2_ALC_noise25,8,(not (Age_0)) and (hasLabRecord some CHE_6),0.6825,0.7744,6
+N2_ALC_noise25,9,hasLabRecord some (ALB_0 and CHE_6),0.68,0.7637999999999999,5
+N2_ALC_noise25,10,hasLabRecord some (CHE_6 and (not (ALB_1))),0.68,0.7637999999999999,6
+N3_ALC_noise75,1,hasDurationRecord some DurationRecord,0.795,0.7887000000000001,3
+N3_ALC_noise75,2,Patient and (hasDurationRecord some DurationRecord),0.795,0.7887000000000001,5
+N3_ALC_noise75,3,hasDurationRecord some ((not (Duration_1)) or (not (Duration_4))),0.795,0.7887000000000001,7
+N3_ALC_noise75,4,hasDurationRecord some ((not (Duration_1)) or (not (Duration_3))),0.795,0.7887000000000001,7
+N3_ALC_noise75,5,hasDurationRecord some ((not (Duration_1)) or (not (Duration_2))),0.795,0.7887000000000001,7
+N3_ALC_noise75,6,hasDurationRecord some ((not (Duration_0)) or (not (Duration_4))),0.795,0.7887000000000001,7
+N3_ALC_noise75,7,hasDurationRecord some ((not (Duration_0)) or (not (Duration_3))),0.795,0.7887000000000001,7
+N3_ALC_noise75,8,hasDurationRecord some ((not (Duration_0)) or (not (Duration_2))),0.795,0.7887000000000001,7
+N3_ALC_noise75,9,hasDurationRecord some ((not (Duration_0)) or (not (Duration_1))),0.795,0.7887000000000001,7
+N3_ALC_noise75,10,(hasBioProfile some BioProfile) and (hasDurationRecord some DurationRecord),0.795,0.7887000000000001,7
+N4_ALC_fmeasure,1,hasDurationRecord some DurationRecord,0.795,0.7887000000000001,3
+N4_ALC_fmeasure,2,hasLabRecord some CHE_6,0.6725,0.7698,3
+N4_ALC_fmeasure,3,hasLabRecord some (ALB_0 and CHE_6),0.68,0.7637999999999999,5
+N4_ALC_fmeasure,4,hasLabRecord some (not (CHE_5)),0.6375,0.7626999999999999,4
+N4_ALC_fmeasure,5,hasLabRecord some (not (ZTT_1)),0.635,0.7606999999999999,4
+N4_ALC_fmeasure,6,hasLabRecord some ZTT_5,0.7275,0.7583,3
+N4_ALC_fmeasure,7,hasLabRecord some (CHE_6 and TBIL_1),0.66,0.7554000000000001,5
+N4_ALC_fmeasure,8,Patient and (not (Age_1)) and (not (Age_4)),0.64,0.7543000000000001,7
+N4_ALC_fmeasure,9,Patient and (not (Age_0)) and (not (Age_4)),0.63,0.7542,7
+N4_ALC_fmeasure,10,Patient and (not (Age_4)),0.62,0.75,4
+O1_OCEL_120s,1,Patient,0.5875,,1
+O1_OCEL_120s,2,Age_5,0.5825,,1
+O1_OCEL_120s,3,Sex_1,0.525,,1
+O1_OCEL_120s,4,not (ALB_0),0.5875,,2
+O1_OCEL_120s,5,not (ALB_1),0.5875,,2
+O1_OCEL_120s,6,not (Activity_0),0.5875,,2
+O1_OCEL_120s,7,not (Activity_1),0.5875,,2
+O1_OCEL_120s,8,not (Activity_2),0.5875,,2
+O1_OCEL_120s,9,not (Activity_3),0.5875,,2
+O1_OCEL_120s,10,not (Activity_4),0.5875,,2
+O1_OCEL_120s,11,not (Age_0),0.5975,,2
+O1_OCEL_120s,12,not (Age_1),0.6075,,2
+O1_OCEL_120s,13,not (Age_2),0.5875,,2
+O1_OCEL_120s,14,not (Age_3),0.5975,,2
+O1_OCEL_120s,15,not (Age_4),0.62,,2
+O1_OCEL_120s,16,not (Age_6),0.51,,2
+O1_OCEL_120s,17,not (CHE_0),0.5875,,2
+O1_OCEL_120s,18,not (CHE_1),0.5875,,2
+O1_OCEL_120s,19,not (CHE_2),0.5875,,2
+O1_OCEL_120s,20,not (CHE_3),0.5875,,2
+T1_ALC_30s,1,hasDurationRecord some DurationRecord,0.795,0.7887000000000001,3
+T1_ALC_30s,2,(not (Age_0)) and (hasDurationRecord some DurationRecord),0.7925,0.7855,6
+T1_ALC_30s,3,(not (Age_1)) and (hasDurationRecord some DurationRecord),0.79,0.7824,6
+T1_ALC_30s,4,(not (Age_4)) and (hasDurationRecord some DurationRecord),0.785,0.7759999999999999,6
+T1_ALC_30s,5,(not (Age_2)) and (hasDurationRecord some DurationRecord),0.775,0.7631999999999999,6
+T1_ALC_30s,6,(not (Age_3)) and (hasDurationRecord some DurationRecord),0.7675,0.7533,6
+T1_ALC_30s,7,hasLabRecord some ZTT_5,0.7275,0.7583,3
+T1_ALC_30s,8,hasLabRecord some (CHE_6 and ZTT_5),0.7275,0.7471,5
+T1_ALC_30s,9,hasDurationRecord some (not (Duration_2)),0.7225,0.6908,4
+T1_ALC_30s,10,hasDurationRecord some (not (Duration_1)),0.7225,0.6908,4
+T2_ALC_300s,1,(Age_5 and Sex_1) or (hasDurationRecord some DurationRecord),0.8025,0.8131999999999999,7
+T2_ALC_300s,2,Age_6 or (hasDurationRecord some DurationRecord),0.8,0.8077,5
+T2_ALC_300s,3,(Age_6 and Sex_0) or (hasDurationRecord some DurationRecord),0.8,0.8009999999999999,7
+T2_ALC_300s,4,(Age_6 and (not (Sex_1))) or (hasDurationRecord some DurationRecord),0.8,0.8009999999999999,8
+T2_ALC_300s,5,(Age_2 and Sex_1) or (hasDurationRecord some DurationRecord),0.7975,0.7939,7
+T2_ALC_300s,6,Age_6 or ((not (Age_0)) and (hasDurationRecord some DurationRecord)),0.7975,0.8048000000000001,8
+T2_ALC_300s,7,(Age_6 or (hasDurationRecord some DurationRecord)) and (not (Age_0)),0.7975,0.8048000000000001,8
+T2_ALC_300s,8,hasDurationRecord some DurationRecord,0.795,0.7887000000000001,3
+T2_ALC_300s,9,Patient and (hasDurationRecord some DurationRecord),0.795,0.7887000000000001,5
+T2_ALC_300s,10,hasDurationRecord some ((not (Duration_1)) or (not (Duration_4))),0.795,0.7887000000000001,7
+X1_ALCQ_noise90_300s,1,Age_6 or (hasDurationRecord some DurationRecord),0.8,0.8077,5
+X1_ALCQ_noise90_300s,2,(Age_6 and Sex_0) or (hasDurationRecord some DurationRecord),0.8,0.8009999999999999,7
+X1_ALCQ_noise90_300s,3,hasDurationRecord some DurationRecord,0.795,0.7887000000000001,3
+X1_ALCQ_noise90_300s,4,Patient and (hasDurationRecord some DurationRecord),0.795,0.7887000000000001,5
+X1_ALCQ_noise90_300s,5,hasDurationRecord some ((not (Duration_1)) or (not (Duration_4))),0.795,0.7887000000000001,7
+X1_ALCQ_noise90_300s,6,hasDurationRecord some ((not (Duration_1)) or (not (Duration_3))),0.795,0.7887000000000001,7
+X1_ALCQ_noise90_300s,7,hasDurationRecord some ((not (Duration_1)) or (not (Duration_2))),0.795,0.7887000000000001,7
+X1_ALCQ_noise90_300s,8,hasDurationRecord some ((not (Duration_0)) or (not (Duration_4))),0.795,0.7887000000000001,7
+X1_ALCQ_noise90_300s,9,hasDurationRecord some ((not (Duration_0)) or (not (Duration_3))),0.795,0.7887000000000001,7
+X1_ALCQ_noise90_300s,10,hasDurationRecord some ((not (Duration_0)) or (not (Duration_2))),0.795,0.7887000000000001,7
+X2_ALCD_noinf_300s,1,hasLabRecord some (ZTT_5 or (ALB_0 and TTT_0)),0.75,0.7863,7
+X2_ALCD_noinf_300s,2,hasLabRecord some (ZTT_5 or (GPT_0 and TTT_3)),0.7475,0.7809,7
+X2_ALCD_noinf_300s,3,hasLabRecord some (ZTT_5 or (CHE_6 and TP_3)),0.7475,0.7865000000000001,7
+X2_ALCD_noinf_300s,4,hasLabRecord some (CHE_6 and (TP_3 or ZTT_5)),0.7475,0.777,7
+X2_ALCD_noinf_300s,5,hasLabRecord some (ZTT_5 or (DBIL_1 and TTT_0)),0.745,0.7829999999999999,7
+X2_ALCD_noinf_300s,6,hasLabRecord some (ZTT_5 and (GOT_1 or GPT_2)),0.745,0.765,7
+X2_ALCD_noinf_300s,7,hasLabRecord some (TTT_0 or ZTT_5),0.7425,0.7876000000000001,5
+X2_ALCD_noinf_300s,8,hasLabRecord some (ZTT_5 or (TCHO_1 and TTT_0)),0.7425,0.7785,7
+X2_ALCD_noinf_300s,9,hasLabRecord some (ZTT_5 or (GPT_2 and TTT_0)),0.7425,0.7766,7
+X2_ALCD_noinf_300s,10,hasLabRecord some (ZTT_5 or (GOT_3 and TTT_0)),0.7425,0.7746,7

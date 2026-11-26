@@ -1,0 +1,139 @@
+{
+  "_comment": "Each entry becomes configs/dl-learner/<id>.conf. kb is relative to ontology/. language selects the refinement-operator constructors (see src/make_dl_configs.py). Settings not listed use DL-Learner defaults. noise = CELOE noisePercentage: a concept that fails to cover more than noise% of the positives is pruned as 'too weak'; with noise 0 only concepts covering ALL positives survive.",
+  "defaults": {
+    "kb": "hepatitis_v2.owl",
+    "algorithm": "celoe",
+    "language": "ALC",
+    "time": 120,
+    "max_depth": 7,
+    "noise": 50,
+    "expansion_penalty": 0.1,
+    "accuracy_method": "pred_acc",
+    "start_class": "Patient"
+  },
+  "experiments": [
+    {
+      "id": "L1_EL_120s",
+      "language": "EL",
+      "group": "language"
+    },
+    {
+      "id": "L2_ALC_120s",
+      "language": "ALC",
+      "group": "language"
+    },
+    {
+      "id": "L3_ALCQ_120s",
+      "language": "ALCQ",
+      "group": "language"
+    },
+    {
+      "id": "L4_ALCD_120s",
+      "language": "ALCD",
+      "group": "language"
+    },
+    {
+      "id": "L5_FULL_120s",
+      "language": "FULL",
+      "group": "language"
+    },
+    {
+      "id": "T1_ALC_30s",
+      "language": "ALC",
+      "time": 30,
+      "group": "runtime"
+    },
+    {
+      "id": "T2_ALC_300s",
+      "language": "ALC",
+      "time": 300,
+      "group": "runtime"
+    },
+    {
+      "id": "D1_ALC_depth4",
+      "language": "ALC",
+      "max_depth": 4,
+      "group": "depth"
+    },
+    {
+      "id": "D2_ALC_depth12",
+      "language": "ALC",
+      "max_depth": 12,
+      "group": "depth"
+    },
+    {
+      "id": "H1_ALC_pen0.02",
+      "language": "ALC",
+      "expansion_penalty": 0.02,
+      "group": "heuristic"
+    },
+    {
+      "id": "H2_ALC_pen0.3",
+      "language": "ALC",
+      "expansion_penalty": 0.3,
+      "group": "heuristic"
+    },
+    {
+      "id": "N1_ALC_noise0",
+      "language": "ALC",
+      "noise": 0,
+      "group": "noise"
+    },
+    {
+      "id": "N2_ALC_noise25",
+      "language": "ALC",
+      "noise": 25,
+      "group": "noise"
+    },
+    {
+      "id": "N3_ALC_noise75",
+      "language": "ALC",
+      "noise": 75,
+      "group": "noise"
+    },
+    {
+      "id": "N4_ALC_fmeasure",
+      "language": "ALC",
+      "accuracy_method": "fmeasure",
+      "group": "noise"
+    },
+    {
+      "id": "A1_FULL_noinf",
+      "language": "FULL",
+      "kb": "hepatitis_v2_noinf.owl",
+      "group": "ablation"
+    },
+    {
+      "id": "A2_ALC_noinf",
+      "language": "ALC",
+      "kb": "hepatitis_v2_noinf.owl",
+      "group": "ablation"
+    },
+    {
+      "id": "A3_ALC_v1",
+      "language": "ALC",
+      "kb": "hepatitis.owl",
+      "group": "ablation"
+    },
+    {
+      "id": "O1_OCEL_120s",
+      "language": "ALC",
+      "algorithm": "ocel",
+      "group": "algorithm"
+    },
+    {
+      "id": "X1_ALCQ_noise90_300s",
+      "language": "ALCQ",
+      "noise": 90,
+      "time": 300,
+      "group": "extended"
+    },
+    {
+      "id": "X2_ALCD_noinf_300s",
+      "language": "ALCD",
+      "kb": "hepatitis_v2_noinf.owl",
+      "time": 300,
+      "group": "extended"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+DL-Learner command line interface
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.apache.jena.ext.com.google.common.cache.Striped64 (file:/C:/Users/ayaz/Desktop/uistra/FRANCO-FINALS/hepatitis-concept-induction/tools/dl-learner/dllearner-1.5.0/lib/jena-shaded-guava-3.16.0.jar)
+WARNING: Please consider reporting this to the maintainers of class org.apache.jena.ext.com.google.common.cache.Striped64
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+Initializing component 'ks' of type OWL File ...
+... initialized component 'ks' in 0ms. Status: OK
+Initializing component 'reasoner' of type closed world reasoner ...
+Loaded reasoner: Pellet (com.clarkparsia.pellet.owlapiv3.PelletReasoner)
+Materializing TBox...
+materialising concepts
+[.....] 0%[.....] 1%[.....] 2%[.....] 3%[.....] 4%[.....] 5%[.....] 6%[.....] 7%[.....] 8%[.....] 9%[.....] 10%[.....] 12%[.....] 13%[.....] 14%[.....] 15%[.....] 16%[.....] 17%[.....] 18%[.....] 19%[=....] 20%[=....] 21%[=....] 23%[=....] 24%[=....] 25%[=....] 26%[=....] 27%[=....] 28%[=....] 29%[=....] 30%[=....] 31%[=....] 32%[=....] 34%[=....] 35%[=....] 36%[=....] 37%[=....] 38%[=....] 39%[==...] 40%[==...] 41%[==...] 42%[==...] 43%[==...] 45%[==...] 46%[==...] 47%[==...] 48%[==...] 49%[==...] 50%[==...] 51%[==...] 52%[==...] 53%[==...] 54%[==...] 56%[==...] 57%[==...] 58%[==...] 59%[===..] 60%[===..] 61%[===..] 62%[===..] 63%[===..] 64%[===..] 65%[===..] 67%[===..] 68%[===..] 69%[===..] 70%[===..] 71%[===..] 72%[===..] 73%[===..] 74%[===..] 75%[===..] 76%[===..] 78%[===..] 79%materialising object properties ...
+[====.] 80%[====.] 81%[====.] 82%materialising datatype properties
+[====.] 83%[====.] 84%[====.] 85%[====.] 86%[====.] 87%[====.] 89%[====.] 90%[====.] 91%[====.] 92%[====.] 93%[====.] 94%[====.] 95%[====.] 96%[====.] 97%[====.] 98%...TBox materialised in 1117 ms.
+... initialized component 'reasoner' in 3s 977ms. Status: OK
+Initializing component 'op' of type rho refinement operator ...
+... initialized component 'op' in 25ms. Status: OK
+Initializing component 'accMethod' of type Predictive Accuracy ...
+... initialized component 'accMethod' in 0ms. Status: OK
+Initializing component 'lp' of type PosNegLPStandard ...
+... initialized component 'lp' in 1ms. Status: OK
+Initializing component 'h' of type OEHeuristicRuntime ...
+... initialized component 'h' in 0ms. Status: OK
+Initializing component 'alg' of type CELOE ...
+... initialized component 'alg' in 1ms. Status: OK
+Running algorithm instance "alg" (CELOE)
+start class:Patient
+more accurate (58.75%) class expression found after 13ms: Patient
+more accurate (62.00%) class expression found after 127ms: Patient and (not (Age_4))
+more accurate (67.25%) class expression found after 1s351ms: hasLabRecord some CHE_6
+more accurate (68.00%) class expression found after 5s461ms: hasLabRecord some (ALB_0 and CHE_6)
+more accurate (72.50%) class expression found after 1m47s849ms: hasLabRecord some (CHE_6 and (not (ZTT_1)))
+Algorithm terminated successfully (time: 120s 1ms, 68717 descriptions tested, 8289 nodes in the search tree).
+
+number of retrievals: 70553
+retrieval reasoning time: 110s 677ms ( 1ms per retrieval)
+number of instance checks: 12 (0 multiple)
+instance check reasoning time: 0ms ( 0ms per instance check)
+(complex) subsumption checks: 1154 (0 multiple)
+subsumption reasoning time: 41ms ( 0ms per subsumption check)
+overall reasoning time: 110s 719ms
+
+solutions:
+1: hasLabRecord some (CHE_6 and (not (ZTT_1))) (pred. acc.: 72.50%, F-measure: 79.70%)
+2: hasLabRecord some (CHE_6 and (not (TP_1))) (pred. acc.: 70.25%, F-measure: 77.92%)
+3: (not (Age_4)) and (hasLabRecord some CHE_6) (pred. acc.: 70.00%, F-measure: 77.94%)
+4: (not (Age_1)) and (hasLabRecord some CHE_6) (pred. acc.: 69.75%, F-measure: 77.96%)
+5: hasLabRecord some (CHE_6 and (not (TCHO_2))) (pred. acc.: 69.25%, F-measure: 77.43%)
+6: hasLabRecord some (CHE_6 and (not (TTT_2))) (pred. acc.: 68.75%, F-measure: 77.56%)
+7: hasLabRecord some (CHE_6 and (not (ZTT_3))) (pred. acc.: 68.50%, F-measure: 77.50%)
+8: (not (Age_0)) and (hasLabRecord some CHE_6) (pred. acc.: 68.25%, F-measure: 77.44%)
+9: hasLabRecord some (ALB_0 and CHE_6) (pred. acc.: 68.00%, F-measure: 76.38%)
+10: hasLabRecord some (CHE_6 and (not (ALB_1))) (pred. acc.: 68.00%, F-measure: 76.38%)
+
+# java -Xmx4g --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.lang.invoke=ALL-UNNAMED --add-opens java.base/java.lang.reflect=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.io=ALL-UNNAMED --add-opens java.base/java.net=ALL-UNNAMED -Dlog4j.configuration=file:C:/Users/ayaz/Desktop/uistra/FRANCO-FINALS/hepatitis-concept-induction/tools/dl-learner/dllearner-1.5.0/etc/log4j.properties -cp C:\Users\ayaz\Desktop\uistra\FRANCO-FINALS\hepatitis-concept-induction\tools\dl-learner\dllearner-1.5.0\lib\* org.dllearner.cli.CLI C:\Users\ayaz\Desktop\uistra\FRANCO-FINALS\hepatitis-concept-induction\configs\dl-learner\N2_ALC_noise25.conf

@@ -1,0 +1,31 @@
+approach,kb_or_features,model,size,train_accuracy,train_f1,test_accuracy,test_precision,test_recall,test_f1
+DL-Learner CELOE FULL (A1_FULL_noinf),hepatitis_v2_noinf.owl,Age_6 or (hasLabRecord min 2 ZTT_5),length 6,0.7475,0.773,0.64,0.7949,0.5254,0.6327
+DL-Learner CELOE ALC (A2_ALC_noinf),hepatitis_v2_noinf.owl,hasLabRecord some (ZTT_5 and (not (GPT_3))),length 6,0.7375,0.764,0.67,0.7955,0.5932,0.6796
+DL-Learner CELOE ALC (A3_ALC_v1),hepatitis.owl,hasDurationRecord some DurationRecord,length 3,0.795,0.7887,0.84,1.0,0.7288,0.8431
+DL-Learner CELOE ALC (D1_ALC_depth4),hepatitis_v2.owl,hasDurationRecord some DurationRecord,length 3,0.795,0.7887,0.84,1.0,0.7288,0.8431
+DL-Learner CELOE ALC (D2_ALC_depth12),hepatitis_v2.owl,hasDurationRecord some DurationRecord,length 3,0.795,0.7887,0.84,1.0,0.7288,0.8431
+DL-Learner CELOE ALC (H1_ALC_pen0.02),hepatitis_v2.owl,hasDurationRecord some DurationRecord,length 3,0.795,0.7887,0.84,1.0,0.7288,0.8431
+DL-Learner CELOE ALC (H2_ALC_pen0.3),hepatitis_v2.owl,hasDurationRecord some DurationRecord,length 3,0.795,0.7887,0.84,1.0,0.7288,0.8431
+DL-Learner CELOE EL (L1_EL_120s),hepatitis_v2.owl,(Age_5 and Sex_1) or (hasDurationRecord some DurationRecord),length 7,0.8025,0.8132,0.82,0.9184,0.7627,0.8333
+DL-Learner CELOE ALC (L2_ALC_120s),hepatitis_v2.owl,hasDurationRecord some DurationRecord,length 3,0.795,0.7887,0.84,1.0,0.7288,0.8431
+DL-Learner CELOE ALCQ (L3_ALCQ_120s),hepatitis_v2.owl,hasDurationRecord some DurationRecord,length 3,0.795,0.7887,0.84,1.0,0.7288,0.8431
+DL-Learner CELOE ALCD (L4_ALCD_120s),hepatitis_v2.owl,hasDurationRecord some DurationRecord,length 3,0.795,0.7887,0.84,1.0,0.7288,0.8431
+DL-Learner CELOE FULL (L5_FULL_120s),hepatitis_v2.owl,hasDurationRecord some DurationRecord,length 3,0.795,0.7887,0.84,1.0,0.7288,0.8431
+DL-Learner CELOE ALC (N1_ALC_noise0),hepatitis_v2.owl,Patient and (Sex_0 or (not (Age_0))),length 6,0.5925,0.7425,0.59,0.59,1.0,0.7421
+DL-Learner CELOE ALC (N2_ALC_noise25),hepatitis_v2.owl,hasLabRecord some (CHE_6 and (not (ZTT_1))),length 6,0.725,0.797,0.72,0.6824,0.9831,0.8056
+DL-Learner CELOE ALC (N3_ALC_noise75),hepatitis_v2.owl,hasDurationRecord some DurationRecord,length 3,0.795,0.7887,0.84,1.0,0.7288,0.8431
+DL-Learner CELOE ALC (N4_ALC_fmeasure),hepatitis_v2.owl,hasDurationRecord some DurationRecord,length 3,0.795,0.7887,0.84,1.0,0.7288,0.8431
+DL-Learner OCEL ALC (O1_OCEL_120s),hepatitis_v2.owl,Patient,length 1,0.5875,0.7402,0.59,0.59,1.0,0.7421
+DL-Learner CELOE ALC (T1_ALC_30s),hepatitis_v2.owl,hasDurationRecord some DurationRecord,length 3,0.795,0.7887,0.84,1.0,0.7288,0.8431
+DL-Learner CELOE ALC (T2_ALC_300s),hepatitis_v2.owl,(Age_5 and Sex_1) or (hasDurationRecord some DurationRecord),length 7,0.8025,0.8132,0.82,0.9184,0.7627,0.8333
+DL-Learner CELOE ALCQ (X1_ALCQ_noise90_300s),hepatitis_v2.owl,Age_6 or (hasDurationRecord some DurationRecord),length 5,0.8,0.8077,0.83,0.92,0.7797,0.844
+DL-Learner CELOE ALCD (X2_ALCD_noinf_300s),hepatitis_v2_noinf.owl,hasLabRecord some (ZTT_5 or (ALB_0 and TTT_0)),length 7,0.75,0.7863,0.67,0.7407,0.678,0.708
+majority (flat),flat,{},{},0.5875,0.7402,0.59,0.59,1.0,0.7421
+decision_tree (flat),flat,"{""max_depth"": 4, ""min_samples_leaf"": 5}","{""depth"": 4, ""leaves"": 10, ""n_rules"": 10}",0.6825,0.7652,0.57,0.6176,0.7119,0.6614
+random_forest (flat),flat,"{""max_depth"": null, ""min_samples_leaf"": 1, ""n_estimators"": 300}","{""n_trees"": 300, ""mean_depth"": 5.5}",0.6825,0.7652,0.57,0.6176,0.7119,0.6614
+majority (relational),relational,{},{},0.5875,0.7402,0.59,0.59,1.0,0.7421
+decision_tree (relational),relational,"{""max_depth"": 4, ""min_samples_leaf"": 5}","{""depth"": 4, ""leaves"": 8, ""n_rules"": 8}",0.925,0.9356,0.9,0.8889,0.9492,0.918
+random_forest (relational),relational,"{""max_depth"": null, ""min_samples_leaf"": 1, ""n_estimators"": 300}","{""n_trees"": 300, ""mean_depth"": 11.0}",1.0,1.0,0.94,0.9344,0.9661,0.95
+majority (no_artefact),no_artefact,{},{},0.5875,0.7402,0.59,0.59,1.0,0.7421
+decision_tree (no_artefact),no_artefact,"{""max_depth"": 3, ""min_samples_leaf"": 20}","{""depth"": 3, ""leaves"": 6, ""n_rules"": 6}",0.8175,0.8513,0.79,0.7794,0.8983,0.8346
+random_forest (no_artefact),no_artefact,"{""max_depth"": null, ""min_samples_leaf"": 1, ""n_estimators"": 300}","{""n_trees"": 300, ""mean_depth"": 11.7}",1.0,1.0,0.83,0.8182,0.9153,0.864

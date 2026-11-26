@@ -1,0 +1,53 @@
+DL-Learner command line interface
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.apache.jena.ext.com.google.common.cache.Striped64 (file:/C:/Users/ayaz/Desktop/uistra/FRANCO-FINALS/hepatitis-concept-induction/tools/dl-learner/dllearner-1.5.0/lib/jena-shaded-guava-3.16.0.jar)
+WARNING: Please consider reporting this to the maintainers of class org.apache.jena.ext.com.google.common.cache.Striped64
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+Initializing component 'ks' of type OWL File ...
+... initialized component 'ks' in 0ms. Status: OK
+Initializing component 'reasoner' of type closed world reasoner ...
+Loaded reasoner: Pellet (com.clarkparsia.pellet.owlapiv3.PelletReasoner)
+Materializing TBox...
+materialising concepts
+[.....] 0%[.....] 1%[.....] 2%[.....] 3%[.....] 4%[.....] 5%[.....] 6%[.....] 7%[.....] 8%[.....] 9%[.....] 10%[.....] 12%[.....] 13%[.....] 14%[.....] 15%[.....] 16%[.....] 17%[.....] 18%[.....] 19%[=....] 20%[=....] 21%[=....] 23%[=....] 24%[=....] 25%[=....] 26%[=....] 27%[=....] 28%[=....] 29%[=....] 30%[=....] 31%[=....] 32%[=....] 34%[=....] 35%[=....] 36%[=....] 37%[=....] 38%[=....] 39%[==...] 40%[==...] 41%[==...] 42%[==...] 43%[==...] 45%[==...] 46%[==...] 47%[==...] 48%[==...] 49%[==...] 50%[==...] 51%[==...] 52%[==...] 53%[==...] 54%[==...] 56%[==...] 57%[==...] 58%[==...] 59%[===..] 60%[===..] 61%[===..] 62%[===..] 63%[===..] 64%[===..] 65%[===..] 67%[===..] 68%[===..] 69%[===..] 70%[===..] 71%[===..] 72%[===..] 73%[===..] 74%[===..] 75%[===..] 76%[===..] 78%[===..] 79%materialising object properties ...
+[====.] 80%[====.] 81%[====.] 82%materialising datatype properties
+[====.] 83%[====.] 84%[====.] 85%[====.] 86%[====.] 87%[====.] 89%[====.] 90%[====.] 91%[====.] 92%[====.] 93%[====.] 94%[====.] 95%[====.] 96%[====.] 97%[====.] 98%...TBox materialised in 868 ms.
+... initialized component 'reasoner' in 3s 888ms. Status: OK
+Initializing component 'op' of type rho refinement operator ...
+... initialized component 'op' in 29ms. Status: OK
+Initializing component 'accMethod' of type Predictive Accuracy ...
+... initialized component 'accMethod' in 0ms. Status: OK
+Initializing component 'lp' of type PosNegLPStandard ...
+... initialized component 'lp' in 0ms. Status: OK
+Initializing component 'h' of type OEHeuristicRuntime ...
+... initialized component 'h' in 0ms. Status: OK
+Initializing component 'alg' of type CELOE ...
+... initialized component 'alg' in 2ms. Status: OK
+Running algorithm instance "alg" (CELOE)
+start class:Patient
+more accurate (58.75%) class expression found after 17ms: Patient
+more accurate (62.00%) class expression found after 143ms: Patient and (not (Age_4))
+more accurate (79.50%) class expression found after 436ms: hasDurationRecord some DurationRecord
+Algorithm terminated successfully (time: 120s 0ms, 84572 descriptions tested, 21977 nodes in the search tree).
+
+number of retrievals: 87051
+retrieval reasoning time: 109s 137ms ( 1ms per retrieval)
+number of instance checks: 13 (0 multiple)
+instance check reasoning time: 0ms ( 0ms per instance check)
+(complex) subsumption checks: 966 (0 multiple)
+subsumption reasoning time: 43ms ( 0ms per subsumption check)
+overall reasoning time: 109s 181ms
+
+solutions:
+1: hasDurationRecord some DurationRecord (pred. acc.: 79.50%, F-measure: 78.87%)
+2: Patient and (hasDurationRecord some DurationRecord) (pred. acc.: 79.50%, F-measure: 78.87%)
+3: hasDurationRecord some ((not (Duration_1)) or (not (Duration_4))) (pred. acc.: 79.50%, F-measure: 78.87%)
+4: hasDurationRecord some ((not (Duration_1)) or (not (Duration_3))) (pred. acc.: 79.50%, F-measure: 78.87%)
+5: hasDurationRecord some ((not (Duration_1)) or (not (Duration_2))) (pred. acc.: 79.50%, F-measure: 78.87%)
+6: hasDurationRecord some ((not (Duration_0)) or (not (Duration_4))) (pred. acc.: 79.50%, F-measure: 78.87%)
+7: hasDurationRecord some ((not (Duration_0)) or (not (Duration_3))) (pred. acc.: 79.50%, F-measure: 78.87%)
+8: hasDurationRecord some ((not (Duration_0)) or (not (Duration_2))) (pred. acc.: 79.50%, F-measure: 78.87%)
+9: hasDurationRecord some ((not (Duration_0)) or (not (Duration_1))) (pred. acc.: 79.50%, F-measure: 78.87%)
+10: (hasBioProfile some BioProfile) and (hasDurationRecord some DurationRecord) (pred. acc.: 79.50%, F-measure: 78.87%)
+
+# java -Xmx4g --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.lang.invoke=ALL-UNNAMED --add-opens java.base/java.lang.reflect=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.io=ALL-UNNAMED --add-opens java.base/java.net=ALL-UNNAMED -Dlog4j.configuration=file:C:/Users/ayaz/Desktop/uistra/FRANCO-FINALS/hepatitis-concept-induction/tools/dl-learner/dllearner-1.5.0/etc/log4j.properties -cp C:\Users\ayaz\Desktop\uistra\FRANCO-FINALS\hepatitis-concept-induction\tools\dl-learner\dllearner-1.5.0\lib\* org.dllearner.cli.CLI C:\Users\ayaz\Desktop\uistra\FRANCO-FINALS\hepatitis-concept-induction\configs\dl-learner\L3_ALCQ_120s.conf

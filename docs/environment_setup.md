@@ -63,3 +63,34 @@ The split files are stored in `configs/folds/`:
 
 The Python environment and DL-Learner installation are maintained separately. The DL-Learner distribution is stored locally under `tools/` and is excluded from version control.
 
+
+## 6. DL-Learner on JDK 17+ (Windows and Linux)
+
+DL-Learner 1.5.0 was built for Java 8. On JDK 17 and later (tested with
+Oracle JDK 25.0.5 and OpenJDK 21 on Windows 11) the CLI fails while initialising
+Apache Jena with `InaccessibleObjectException: module java.base does not "opens
+java.lang.invoke"`. Adding the following JVM flags fixes it; `src/run_dl_learner.py`
+passes them automatically:
+
+```
+--add-opens java.base/java.lang=ALL-UNNAMED
+--add-opens java.base/java.lang.invoke=ALL-UNNAMED
+--add-opens java.base/java.lang.reflect=ALL-UNNAMED
+--add-opens java.base/java.util=ALL-UNNAMED
+--add-opens java.base/java.io=ALL-UNNAMED
+--add-opens java.base/java.net=ALL-UNNAMED
+```
+
+The runner invokes `org.dllearner.cli.CLI` directly with `-cp lib/*` instead of
+the `bin/cli` launcher so the same command works on both platforms.
+
+## 7. Phase-0 smoke test (end-to-end compatibility)
+
+| Check | Result |
+|---|---|
+| `examples/father.conf` | solution `male and (hasChild some Thing)` in 1 s |
+| `ontology/hepatitis.owl` (6,419 individuals) load + closed-world materialisation | about 3 s, 4 GB heap |
+| CELOE, 20 examples, 20 s | 24k descriptions tested, role-based concepts with datatype restrictions found |
+| CELOE, 400 examples, 30 s | about 20k descriptions tested |
+
+Retrieval dominates the runtime (about 1 ms per retrieval on the full ABox).

@@ -1,5 +1,33 @@
+"""Build the Hepatitis OWL knowledge base from the processed CSV files.
 
+Modelling (see docs/dataset_analysis.md and docs/modelling_choices.md):
+  * dispat rows  -> Patient individuals        (patient_<m_id>)
+  * Bio rows     -> BioProfile individuals     (bio_<b_id>)
+  * indis rows   -> LabRecord individuals      (lab_<in_id>)
+  * inf rows     -> DurationRecord individuals (duration_<a_id>)
+  * rel11/12/13  -> object properties hasBioProfile / hasLabRecord / hasDurationRecord
+  * every categorical code -> a value class (e.g. GOT_3 subClassOf LabRecord) and
+    an integer data property (e.g. gotCode = 3) so ordinal thresholds are expressible
+  * the target column dispat.Type is NEVER written to the ontology; it is exported
+    separately to data/processed/labels.csv
+
+Variants (command-line flags):
+  --disjoint            add pairwise disjointness between the four entity classes and
+                        between sibling value classes of the same attribute (v2)
+  --closure             add per-patient role closure axioms (hasX only {linked...} and
+                        hasX max 0 when no link) so universal restrictions are entailed
+                        under the open-world assumption
+  --exclude-inf         drop DurationRecord individuals and hasDurationRecord links
+                        (artefact ablation)
+  --no-data-properties  drop the integer data properties (smaller ABox)
+  --train-only          keep only the patients listed in configs/folds/train.csv
+  --output PATH         output file (default ontology/hepatitis.owl)
+  --no-labels           do not (re)write data/processed/labels.csv
+
+Running without flags reproduces the original ontology/hepatitis.owl (v1).
+"""
 from pathlib import Path
+import argparse
 import types
 
 import pandas as pd
@@ -8,342 +36,251 @@ from owlready2 import (
     Thing,
     ObjectProperty,
     DataProperty,
+    AllDisjoint,
+    OneOf,
 )
-
-
-# 1. Paths and input data
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data" / "processed"
 ONTOLOGY_DIR = ROOT / "ontology"
-
-ONTOLOGY_DIR.mkdir(parents=True, exist_ok=True)
-
-bio = pd.read_csv(DATA_DIR / "Bio.csv")
-patients = pd.read_csv(DATA_DIR / "dispat.csv")
-labs = pd.read_csv(DATA_DIR / "indis.csv")
-durations = pd.read_csv(DATA_DIR / "inf.csv")
-
-rel_bio = pd.read_csv(DATA_DIR / "rel11.csv")
-rel_labs = pd.read_csv(DATA_DIR / "rel12.csv")
-rel_durations = pd.read_csv(DATA_DIR / "rel13.csv")
-
-
-# 2. Basic input validation
-
-assert not patients.isnull().any().any()
-assert not bio.isnull().any().any()
-assert not labs.isnull().any().any()
-assert not durations.isnull().any().any()
-
-assert patients["m_id"].is_unique
-assert bio["b_id"].is_unique
-assert labs["in_id"].is_unique
-assert durations["a_id"].is_unique
-
-assert len(patients) == 500
-assert len(bio) == 32
-assert len(labs) == 5691
-assert len(durations) == 196
-
-# Check foreign-key references.
-assert set(rel_bio["m_id"]).issubset(set(patients["m_id"]))
-assert set(rel_bio["b_id"]).issubset(set(bio["b_id"]))
-
-assert set(rel_labs["m_id"]).issubset(set(patients["m_id"]))
-assert set(rel_labs["in_id"]).issubset(set(labs["in_id"]))
-
-assert set(rel_durations["m_id"]).issubset(set(patients["m_id"]))
-assert set(rel_durations["a_id"]).issubset(set(durations["a_id"]))
-
-# Check that association tables contain no duplicate links.
-assert not rel_bio.duplicated().any()
-assert not rel_labs.duplicated().any()
-assert not rel_durations.duplicated().any()
-
-
-# 3. Create ontology and main classes
-
-onto = get_ontology("http://example.org/hepatitis.owl")
-
-with onto:
-
-    class Patient(Thing):
-        pass
-
-    class BioProfile(Thing):
-        pass
-
-    class LabRecord(Thing):
-        pass
-
-    class DurationRecord(Thing):
-        pass
-
-    # Object properties
-    class hasBioProfile(ObjectProperty):
-        domain = [Patient]
-        range = [BioProfile]
-
-    class hasLabRecord(ObjectProperty):
-        domain = [Patient]
-        range = [LabRecord]
-
-    class hasDurationRecord(ObjectProperty):
-        domain = [Patient]
-        range = [DurationRecord]
-
-    # Patient data properties
-    class sexCode(DataProperty):
-        domain = [Patient]
-        range = [int]
-
-    class ageCode(DataProperty):
-        domain = [Patient]
-        range = [int]
-
-    # BioProfile data properties
-    class fibrosisCode(DataProperty):
-        domain = [BioProfile]
-        range = [int]
-
-    class activityCode(DataProperty):
-        domain = [BioProfile]
-        range = [int]
-
-    # DurationRecord data property
-    class durationCode(DataProperty):
-        domain = [DurationRecord]
-        range = [int]
-
-
-# 4. Create categorical classes
-
-category_classes = {}
-
-with onto:
-
-    # Patient categories
-    for code in sorted(patients["sex"].unique()):
-        name = f"Sex_{int(code)}"
-        category_classes[name] = types.new_class(name, (Patient,))
-
-    for code in sorted(patients["age"].unique()):
-        name = f"Age_{int(code)}"
-        category_classes[name] = types.new_class(name, (Patient,))
-
-    # BioProfile categories
-    for code in sorted(bio["fibros"].unique()):
-        name = f"Fibrosis_{int(code)}"
-        category_classes[name] = types.new_class(name, (BioProfile,))
-
-    for code in sorted(bio["activity"].unique()):
-        name = f"Activity_{int(code)}"
-        category_classes[name] = types.new_class(name, (BioProfile,))
-
-    # Laboratory categories
-    lab_attributes = [c for c in labs.columns if c != "in_id"]
-
-    for column in lab_attributes:
-        for code in sorted(labs[column].unique()):
-            name = f"{column.upper()}_{int(code)}"
-            category_classes[name] = types.new_class(name, (LabRecord,))
-
-    # Duration categories
-    for code in sorted(durations["dur"].unique()):
-        name = f"Duration_{int(code)}"
-        category_classes[name] = types.new_class(name, (DurationRecord,))
-
-
-# 5. Create laboratory data properties
-
-lab_data_properties = {}
-
-with onto:
-
-    for column in lab_attributes:
-        property_name = f"{column}Code"
-
-        prop = types.new_class(property_name, (DataProperty,))
-        prop.domain = [LabRecord]
-        prop.range = [int]
-
-        lab_data_properties[column] = prop
-
-
-# 6. Create individuals and category assertions
-
-patient_map = {}
-bio_map = {}
-lab_map = {}
-duration_map = {}
-
-with onto:
-
-    # Patients
-    for _, row in patients.iterrows():
-        patient_id = int(row["m_id"])
-        patient = Patient(f"patient_{patient_id}")
-
-        patient_map[patient_id] = patient
-
-        patient.sexCode = [int(row["sex"])]
-        patient.ageCode = [int(row["age"])]
-
-        patient.is_a.append(
-            category_classes[f"Sex_{int(row['sex'])}"]
-        )
-        patient.is_a.append(
-            category_classes[f"Age_{int(row['age'])}"]
-        )
-
-    # Bio profiles
-    for _, row in bio.iterrows():
-        record_id = int(row["b_id"])
-        record = BioProfile(f"bio_{record_id}")
-
-        bio_map[record_id] = record
-
-        record.fibrosisCode = [int(row["fibros"])]
-        record.activityCode = [int(row["activity"])]
-
-        record.is_a.append(
-            category_classes[f"Fibrosis_{int(row['fibros'])}"]
-        )
-        record.is_a.append(
-            category_classes[f"Activity_{int(row['activity'])}"]
-        )
-
-    # Laboratory records
-    for _, row in labs.iterrows():
-        record_id = int(row["in_id"])
-        record = LabRecord(f"lab_{record_id}")
-
-        lab_map[record_id] = record
-
-        for column in lab_attributes:
-            code = int(row[column])
-
-            setattr(record, f"{column}Code", [code])
-
-            category_name = f"{column.upper()}_{code}"
-            record.is_a.append(category_classes[category_name])
-
-    # Duration records
-    for _, row in durations.iterrows():
-        record_id = int(row["a_id"])
-        record = DurationRecord(f"duration_{record_id}")
-
-        duration_map[record_id] = record
-
-        record.durationCode = [int(row["dur"])]
-        record.is_a.append(
-            category_classes[f"Duration_{int(row['dur'])}"]
-        )
-
-
-# 7. Create object-property relationships
-
-with onto:
-
-    for _, row in rel_bio.iterrows():
-        patient_map[int(row["m_id"])].hasBioProfile.append(
-            bio_map[int(row["b_id"])]
-        )
-
-    for _, row in rel_labs.iterrows():
-        patient_map[int(row["m_id"])].hasLabRecord.append(
-            lab_map[int(row["in_id"])]
-        )
-
-    for _, row in rel_durations.iterrows():
-        patient_map[int(row["m_id"])].hasDurationRecord.append(
-            duration_map[int(row["a_id"])]
-        )
-
-
-# 8. Save target labels separately
-
-labels = patients[["m_id", "Type"]].copy()
-labels.columns = ["patient_id", "target"]
-
-labels.to_csv(DATA_DIR / "labels.csv", index=False)
-
-
-# 9. Validate generated ontology
-
-# Individual counts
-assert len(patient_map) == 500
-assert len(bio_map) == 32
-assert len(lab_map) == 5691
-assert len(duration_map) == 196
-
-# Relationship counts
-assert sum(len(p.hasBioProfile) for p in patient_map.values()) == 621
-assert sum(len(p.hasLabRecord) for p in patient_map.values()) == 5691
-assert sum(len(p.hasDurationRecord) for p in patient_map.values()) == 196
-
-# Every individual has its expected category assertions.
-for _, row in patients.iterrows():
-    p = patient_map[int(row["m_id"])]
-    assert category_classes[f"Sex_{int(row['sex'])}"] in p.is_a
-    assert category_classes[f"Age_{int(row['age'])}"] in p.is_a
-
-for _, row in bio.iterrows():
-    record = bio_map[int(row["b_id"])]
-    assert category_classes[f"Fibrosis_{int(row['fibros'])}"] in record.is_a
-    assert category_classes[f"Activity_{int(row['activity'])}"] in record.is_a
-
-for _, row in labs.iterrows():
-    record = lab_map[int(row["in_id"])]
-
-    for column in lab_attributes:
-        code = int(row[column])
-        assert category_classes[f"{column.upper()}_{code}"] in record.is_a
-
-for _, row in durations.iterrows():
-    record = duration_map[int(row["a_id"])]
-    assert category_classes[f"Duration_{int(row['dur'])}"] in record.is_a
-
-# Every relationship points to the expected individual.
-for _, row in rel_bio.iterrows():
-    assert bio_map[int(row["b_id"])] in (
-        patient_map[int(row["m_id"])].hasBioProfile
-    )
-
-for _, row in rel_labs.iterrows():
-    assert lab_map[int(row["in_id"])] in (
-        patient_map[int(row["m_id"])].hasLabRecord
-    )
-
-for _, row in rel_durations.iterrows():
-    assert duration_map[int(row["a_id"])] in (
-        patient_map[int(row["m_id"])].hasDurationRecord
-    )
-
-
-# 10. Save ontology
-
-output_path = ONTOLOGY_DIR / "hepatitis.owl"
-onto.save(file=str(output_path), format="rdfxml")
-
-
-
-# 11. Print summary
-
-print("\nONTOLOGY GENERATED AND VALIDATED")
-print("--------------------------------")
-print(f"Patients:          {len(patient_map)}")
-print(f"Bio profiles:      {len(bio_map)}")
-print(f"Lab records:       {len(lab_map)}")
-print(f"Duration records:  {len(duration_map)}")
-
-print(f"Bio relationships:      {len(rel_bio)}")
-print(f"Lab relationships:      {len(rel_labs)}")
-print(f"Duration relationships: {len(rel_durations)}")
-
-print(f"Categorical classes: {len(category_classes)}")
-print(f"Lab data properties: {len(lab_data_properties)}")
-
-print(f"\nLabels saved: {DATA_DIR / 'labels.csv'}")
-print(f"Ontology saved: {output_path}")
+IRI = "http://example.org/hepatitis.owl"
+
+LAB_ATTRIBUTES = ["got", "gpt", "alb", "tbil", "dbil", "che", "ttt", "ztt", "tcho", "tp"]
+
+
+def parse_args():
+    p = argparse.ArgumentParser(description=__doc__,
+                                formatter_class=argparse.RawDescriptionHelpFormatter)
+    p.add_argument("--output", type=Path, default=ONTOLOGY_DIR / "hepatitis.owl")
+    p.add_argument("--disjoint", action="store_true")
+    p.add_argument("--closure", action="store_true")
+    p.add_argument("--exclude-inf", action="store_true")
+    p.add_argument("--no-data-properties", action="store_true")
+    p.add_argument("--train-only", action="store_true")
+    p.add_argument("--no-labels", action="store_true")
+    return p.parse_args()
+
+
+def load_tables():
+    t = {
+        "bio": pd.read_csv(DATA_DIR / "Bio.csv"),
+        "patients": pd.read_csv(DATA_DIR / "dispat.csv"),
+        "labs": pd.read_csv(DATA_DIR / "indis.csv"),
+        "durations": pd.read_csv(DATA_DIR / "inf.csv"),
+        "rel_bio": pd.read_csv(DATA_DIR / "rel11.csv"),
+        "rel_labs": pd.read_csv(DATA_DIR / "rel12.csv"),
+        "rel_durations": pd.read_csv(DATA_DIR / "rel13.csv"),
+    }
+    for name in ("patients", "bio", "labs", "durations"):
+        assert not t[name].isnull().any().any(), f"{name} has missing values"
+    assert t["patients"]["m_id"].is_unique and t["bio"]["b_id"].is_unique
+    assert t["labs"]["in_id"].is_unique and t["durations"]["a_id"].is_unique
+    assert len(t["patients"]) == 500 and len(t["bio"]) == 32
+    assert len(t["labs"]) == 5691 and len(t["durations"]) == 196
+    assert set(t["rel_bio"]["m_id"]) <= set(t["patients"]["m_id"])
+    assert set(t["rel_bio"]["b_id"]) <= set(t["bio"]["b_id"])
+    assert set(t["rel_labs"]["m_id"]) <= set(t["patients"]["m_id"])
+    assert set(t["rel_labs"]["in_id"]) <= set(t["labs"]["in_id"])
+    assert set(t["rel_durations"]["m_id"]) <= set(t["patients"]["m_id"])
+    assert set(t["rel_durations"]["a_id"]) <= set(t["durations"]["a_id"])
+    for name in ("rel_bio", "rel_labs", "rel_durations"):
+        assert not t[name].duplicated().any(), f"{name} has duplicate links"
+    return t
+
+
+def restrict_to_patients(t, keep_ids):
+    """Keep only the given patients and the records reachable from them."""
+    keep = set(keep_ids)
+    t["patients"] = t["patients"][t["patients"]["m_id"].isin(keep)]
+    t["rel_bio"] = t["rel_bio"][t["rel_bio"]["m_id"].isin(keep)]
+    t["rel_labs"] = t["rel_labs"][t["rel_labs"]["m_id"].isin(keep)]
+    t["rel_durations"] = t["rel_durations"][t["rel_durations"]["m_id"].isin(keep)]
+    t["bio"] = t["bio"][t["bio"]["b_id"].isin(t["rel_bio"]["b_id"])]
+    t["labs"] = t["labs"][t["labs"]["in_id"].isin(t["rel_labs"]["in_id"])]
+    t["durations"] = t["durations"][t["durations"]["a_id"].isin(t["rel_durations"]["a_id"])]
+    return t
+
+
+def build(t, args):
+    onto = get_ontology(IRI)
+    data_props = not args.no_data_properties
+    include_inf = not args.exclude_inf
+
+    with onto:
+        class Patient(Thing):
+            pass
+
+        class BioProfile(Thing):
+            pass
+
+        class LabRecord(Thing):
+            pass
+
+        class hasBioProfile(ObjectProperty):
+            domain = [Patient]
+            range = [BioProfile]
+
+        class hasLabRecord(ObjectProperty):
+            domain = [Patient]
+            range = [LabRecord]
+
+        entity_classes = [Patient, BioProfile, LabRecord]
+        DurationRecord = hasDurationRecord = None
+        if include_inf:
+            class DurationRecord(Thing):
+                pass
+
+            class hasDurationRecord(ObjectProperty):
+                domain = [Patient]
+                range = [DurationRecord]
+
+            entity_classes.append(DurationRecord)
+
+        # Data properties (integer codes).
+        props = {}
+        if data_props:
+            spec = [("sexCode", Patient), ("ageCode", Patient),
+                    ("fibrosisCode", BioProfile), ("activityCode", BioProfile)]
+            if include_inf:
+                spec.append(("durationCode", DurationRecord))
+            spec += [(f"{c}Code", LabRecord) for c in LAB_ATTRIBUTES]
+            for name, dom in spec:
+                prop = types.new_class(name, (DataProperty,))
+                prop.domain = [dom]
+                prop.range = [int]
+                props[name] = prop
+
+        # Value classes, grouped by attribute so disjointness can be declared per group.
+        groups = {}
+
+        def value_group(prefix, parent, codes):
+            classes = []
+            for code in sorted(int(c) for c in codes):
+                classes.append(types.new_class(f"{prefix}_{code}", (parent,)))
+            groups[prefix] = classes
+            return {int(c.name.split("_")[-1]): c for c in classes}
+
+        sex_cls = value_group("Sex", Patient, t["patients"]["sex"].unique())
+        age_cls = value_group("Age", Patient, t["patients"]["age"].unique())
+        fib_cls = value_group("Fibrosis", BioProfile, t["bio"]["fibros"].unique())
+        act_cls = value_group("Activity", BioProfile, t["bio"]["activity"].unique())
+        lab_cls = {c: value_group(c.upper(), LabRecord, t["labs"][c].unique())
+                   for c in LAB_ATTRIBUTES}
+        dur_cls = (value_group("Duration", DurationRecord, t["durations"]["dur"].unique())
+                   if include_inf else {})
+
+        if args.disjoint:
+            AllDisjoint(entity_classes)
+            for classes in groups.values():
+                if len(classes) > 1:
+                    AllDisjoint(classes)
+
+        # Individuals.
+        patient_map, bio_map, lab_map, dur_map = {}, {}, {}, {}
+        for _, row in t["patients"].iterrows():
+            pid = int(row["m_id"])
+            ind = Patient(f"patient_{pid}")
+            patient_map[pid] = ind
+            ind.is_a.append(sex_cls[int(row["sex"])])
+            ind.is_a.append(age_cls[int(row["age"])])
+            if data_props:
+                ind.sexCode = [int(row["sex"])]
+                ind.ageCode = [int(row["age"])]
+
+        for _, row in t["bio"].iterrows():
+            bid = int(row["b_id"])
+            ind = BioProfile(f"bio_{bid}")
+            bio_map[bid] = ind
+            ind.is_a.append(fib_cls[int(row["fibros"])])
+            ind.is_a.append(act_cls[int(row["activity"])])
+            if data_props:
+                ind.fibrosisCode = [int(row["fibros"])]
+                ind.activityCode = [int(row["activity"])]
+
+        for _, row in t["labs"].iterrows():
+            lid = int(row["in_id"])
+            ind = LabRecord(f"lab_{lid}")
+            lab_map[lid] = ind
+            for c in LAB_ATTRIBUTES:
+                code = int(row[c])
+                ind.is_a.append(lab_cls[c][code])
+                if data_props:
+                    setattr(ind, f"{c}Code", [code])
+
+        if include_inf:
+            for _, row in t["durations"].iterrows():
+                aid = int(row["a_id"])
+                ind = DurationRecord(f"duration_{aid}")
+                dur_map[aid] = ind
+                ind.is_a.append(dur_cls[int(row["dur"])])
+                if data_props:
+                    ind.durationCode = [int(row["dur"])]
+
+        # Relationships.
+        for _, row in t["rel_bio"].iterrows():
+            patient_map[int(row["m_id"])].hasBioProfile.append(bio_map[int(row["b_id"])])
+        for _, row in t["rel_labs"].iterrows():
+            patient_map[int(row["m_id"])].hasLabRecord.append(lab_map[int(row["in_id"])])
+        if include_inf:
+            for _, row in t["rel_durations"].iterrows():
+                patient_map[int(row["m_id"])].hasDurationRecord.append(
+                    dur_map[int(row["a_id"])])
+
+        # role closure, needed if 'only' should ever be entailed by a reasoner
+        if args.closure:
+            roles = [hasBioProfile, hasLabRecord] + ([hasDurationRecord] if include_inf else [])
+            for ind in patient_map.values():
+                for role in roles:
+                    linked = list(getattr(ind, role.python_name))
+                    if linked:
+                        ind.is_a.append(role.only(OneOf(linked)))
+                    else:
+                        ind.is_a.append(role.max(0, Thing))
+
+    # quick self-check
+    assert len(patient_map) == len(t["patients"])
+    assert len(bio_map) == len(t["bio"]) and len(lab_map) == len(t["labs"])
+    assert sum(len(p.hasBioProfile) for p in patient_map.values()) == len(t["rel_bio"])
+    assert sum(len(p.hasLabRecord) for p in patient_map.values()) == len(t["rel_labs"])
+    if include_inf:
+        assert len(dur_map) == len(t["durations"])
+        assert sum(len(p.hasDurationRecord) for p in patient_map.values()) == len(t["rel_durations"])
+
+    stats = {
+        "patients": len(patient_map), "bio_profiles": len(bio_map),
+        "lab_records": len(lab_map), "duration_records": len(dur_map),
+        "value_classes": sum(len(g) for g in groups.values()),
+        "data_properties": len(props),
+        "disjoint_axioms": (1 + sum(1 for g in groups.values() if len(g) > 1)) if args.disjoint else 0,
+    }
+    return onto, stats
+
+
+def main():
+    args = parse_args()
+    t = load_tables()
+
+    if not args.no_labels and not args.train_only:
+        labels = t["patients"][["m_id", "Type"]].copy()
+        labels.columns = ["patient_id", "target"]
+        labels.to_csv(DATA_DIR / "labels.csv", index=False)
+
+    if args.train_only:
+        train = pd.read_csv(ROOT / "configs" / "folds" / "train.csv")
+        t = restrict_to_patients(t, train["patient_id"])
+
+    onto, stats = build(t, args)
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    onto.save(file=str(args.output), format="rdfxml")
+
+    print("ONTOLOGY GENERATED AND VALIDATED")
+    for k, v in stats.items():
+        print(f"  {k:18} {v}")
+    print(f"  flags: disjoint={args.disjoint} closure={args.closure} "
+          f"exclude_inf={args.exclude_inf} data_props={not args.no_data_properties} "
+          f"train_only={args.train_only}")
+    print(f"Ontology saved: {args.output}")
+
+
+if __name__ == "__main__":
+    main()

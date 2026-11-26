@@ -1,0 +1,10 @@
+feature,type0,type1,share_of_type1
+has a duration record,0,196,0.667
+>= 2 Bio links,0,82,0.279
+> 21 lab records,0,47,0.16
+linked to a Bio row with fibros = 0,0,19,0.065
+linked to a Bio row with activity = 0,0,12,0.041
+linked to a Bio row with activity = 4,0,41,0.139
+has a lab record with che = 0,0,5,0.017
+has a lab record with che = 2,25,0,0.0
+duration record OR >= 2 Bio links,0,218,0.741

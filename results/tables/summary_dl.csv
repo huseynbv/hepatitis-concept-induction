@@ -1,0 +1,22 @@
+run_id,group,kb,algorithm,language,time_budget_s,max_depth,noise,expansion_penalty,accuracy_method,concept,length,depth,roles,train_accuracy,train_f1,test_accuracy,test_precision,test_recall,test_f1,search_time_s,descriptions_tested,search_tree_nodes,reasoner_init_s
+A1_FULL_noinf,ablation,hepatitis_v2_noinf.owl,celoe,FULL,120,7,50,0.1,pred_acc,Age_6 or (hasLabRecord min 2 ZTT_5),6,1,hasLabRecord,0.7475,0.773,0.64,0.7949,0.5254,0.6327,120.0,87419,25016.0,3.265
+A2_ALC_noinf,ablation,hepatitis_v2_noinf.owl,celoe,ALC,120,7,50,0.1,pred_acc,hasLabRecord some (ZTT_5 and (not (GPT_3))),6,1,hasLabRecord,0.7375,0.764,0.67,0.7955,0.5932,0.6796,120.0,88176,25398.0,3.363
+A3_ALC_v1,ablation,hepatitis.owl,celoe,ALC,120,7,50,0.1,pred_acc,hasDurationRecord some DurationRecord,3,1,hasDurationRecord,0.795,0.7887,0.84,1.0,0.7288,0.8431,120.002,92614,22090.0,3.414
+D1_ALC_depth4,depth,hepatitis_v2.owl,celoe,ALC,120,4,50,0.1,pred_acc,hasDurationRecord some DurationRecord,3,1,hasDurationRecord,0.795,0.7887,0.84,1.0,0.7288,0.8431,120.001,94129,22166.0,3.467
+D2_ALC_depth12,depth,hepatitis_v2.owl,celoe,ALC,120,12,50,0.1,pred_acc,hasDurationRecord some DurationRecord,3,1,hasDurationRecord,0.795,0.7887,0.84,1.0,0.7288,0.8431,120.001,68449,20355.0,3.362
+H1_ALC_pen0.02,heuristic,hepatitis_v2.owl,celoe,ALC,120,7,50,0.02,pred_acc,hasDurationRecord some DurationRecord,3,1,hasDurationRecord,0.795,0.7887,0.84,1.0,0.7288,0.8431,120.0,56601,4929.0,3.601
+H2_ALC_pen0.3,heuristic,hepatitis_v2.owl,celoe,ALC,120,7,50,0.3,pred_acc,hasDurationRecord some DurationRecord,3,1,hasDurationRecord,0.795,0.7887,0.84,1.0,0.7288,0.8431,120.0,77402,22589.0,3.7720000000000002
+L1_EL_120s,language,hepatitis_v2.owl,celoe,EL,120,7,50,0.1,pred_acc,(Age_5 and Sex_1) or (hasDurationRecord some DurationRecord),7,1,hasDurationRecord,0.8025,0.8132,0.82,0.9184,0.7627,0.8333,120.0,193252,31912.0,3.674
+L2_ALC_120s,language,hepatitis_v2.owl,celoe,ALC,120,7,50,0.1,pred_acc,hasDurationRecord some DurationRecord,3,1,hasDurationRecord,0.795,0.7887,0.84,1.0,0.7288,0.8431,120.0,85033,21444.0,3.777
+L3_ALCQ_120s,language,hepatitis_v2.owl,celoe,ALCQ,120,7,50,0.1,pred_acc,hasDurationRecord some DurationRecord,3,1,hasDurationRecord,0.795,0.7887,0.84,1.0,0.7288,0.8431,120.0,84572,21977.0,3.888
+L4_ALCD_120s,language,hepatitis_v2.owl,celoe,ALCD,120,7,50,0.1,pred_acc,hasDurationRecord some DurationRecord,3,1,hasDurationRecord,0.795,0.7887,0.84,1.0,0.7288,0.8431,120.0,72605,20959.0,3.668
+L5_FULL_120s,language,hepatitis_v2.owl,celoe,FULL,120,7,50,0.1,pred_acc,hasDurationRecord some DurationRecord,3,1,hasDurationRecord,0.795,0.7887,0.84,1.0,0.7288,0.8431,120.003,59062,16716.0,3.558
+N1_ALC_noise0,noise,hepatitis_v2.owl,celoe,ALC,120,7,0,0.1,pred_acc,Patient and (Sex_0 or (not (Age_0))),6,0,,0.5925,0.7425,0.59,0.59,1.0,0.7421,120.0,53656,7265.0,4.142
+N2_ALC_noise25,noise,hepatitis_v2.owl,celoe,ALC,120,7,25,0.1,pred_acc,hasLabRecord some (CHE_6 and (not (ZTT_1))),6,1,hasLabRecord,0.725,0.797,0.72,0.6824,0.9831,0.8056,120.001,68717,8289.0,3.977
+N3_ALC_noise75,noise,hepatitis_v2.owl,celoe,ALC,120,7,75,0.1,pred_acc,hasDurationRecord some DurationRecord,3,1,hasDurationRecord,0.795,0.7887,0.84,1.0,0.7288,0.8431,120.0,84289,30387.0,3.431
+N4_ALC_fmeasure,noise,hepatitis_v2.owl,celoe,ALC,120,7,50,0.1,fmeasure,hasDurationRecord some DurationRecord,3,1,hasDurationRecord,0.795,0.7887,0.84,1.0,0.7288,0.8431,120.0,66713,20603.0,4.098
+O1_OCEL_120s,algorithm,hepatitis_v2.owl,ocel,ALC,120,7,50,0.1,pred_acc,Patient,1,0,,0.5875,0.7402,0.59,0.59,1.0,0.7421,,948201,,3.338
+T1_ALC_30s,runtime,hepatitis_v2.owl,celoe,ALC,30,7,50,0.1,pred_acc,hasDurationRecord some DurationRecord,3,1,hasDurationRecord,0.795,0.7887,0.84,1.0,0.7288,0.8431,30.0,18980,6004.0,3.762
+T2_ALC_300s,runtime,hepatitis_v2.owl,celoe,ALC,300,7,50,0.1,pred_acc,(Age_5 and Sex_1) or (hasDurationRecord some DurationRecord),7,1,hasDurationRecord,0.8025,0.8132,0.82,0.9184,0.7627,0.8333,300.001,337539,69894.0,3.321
+X1_ALCQ_noise90_300s,extended,hepatitis_v2.owl,celoe,ALCQ,300,7,90,0.1,pred_acc,Age_6 or (hasDurationRecord some DurationRecord),5,1,hasDurationRecord,0.8,0.8077,0.83,0.92,0.7797,0.844,300.0,321351,147759.0,3.458
+X2_ALCD_noinf_300s,extended,hepatitis_v2_noinf.owl,celoe,ALCD,300,7,50,0.1,pred_acc,hasLabRecord some (ZTT_5 or (ALB_0 and TTT_0)),7,1,hasLabRecord,0.75,0.7863,0.67,0.7407,0.678,0.708,300.0,322412,68318.0,3.155

@@ -2,8 +2,9 @@ from pathlib import Path
 import csv
 import re
 
-SQL_FILE = Path("data/raw/Hepatitis_std.sql")
-OUTPUT_DIR = Path("data/processed")
+ROOT = Path(__file__).resolve().parent.parent
+SQL_FILE = ROOT / "data" / "raw" / "Hepatitis_std.sql"
+OUTPUT_DIR = ROOT / "data" / "processed"
 
 EXPECTED_ROWS = {
     "Bio": 32,

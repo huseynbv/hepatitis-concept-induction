@@ -1,0 +1,77 @@
+run_id,train_acc,after_s,concept
+A1_FULL_noinf,0.5875,0.016,Patient
+A1_FULL_noinf,0.62,0.136,Patient and (not (Age_4))
+A1_FULL_noinf,0.6275,0.457,ageCode some integer[>= 4]
+A1_FULL_noinf,0.66,0.463,ageCode some integer[>= 5]
+A1_FULL_noinf,0.7275,1.309,hasLabRecord some ZTT_5
+A1_FULL_noinf,0.74,1.332,hasLabRecord min 2 ZTT_5
+A1_FULL_noinf,0.7475,117.293,Age_6 or (hasLabRecord min 2 ZTT_5)
+A2_ALC_noinf,0.5875,0.014,Patient
+A2_ALC_noinf,0.62,0.13,Patient and (not (Age_4))
+A2_ALC_noinf,0.7275,1.35,hasLabRecord some ZTT_5
+A2_ALC_noinf,0.7375,72.67,hasLabRecord some (ZTT_5 and (not (GPT_3)))
+A3_ALC_v1,0.5875,0.012,Patient
+A3_ALC_v1,0.62,0.085,Patient and (not (Age_4))
+A3_ALC_v1,0.795,0.263,hasDurationRecord some DurationRecord
+D1_ALC_depth4,0.5875,0.014,Patient
+D1_ALC_depth4,0.62,0.12,Patient and (not (Age_4))
+D1_ALC_depth4,0.795,0.342,hasDurationRecord some DurationRecord
+D2_ALC_depth12,0.5875,0.014,Patient
+D2_ALC_depth12,0.62,0.143,Patient and (not (Age_4))
+D2_ALC_depth12,0.795,0.424,hasDurationRecord some DurationRecord
+H1_ALC_pen0.02,0.5875,0.014,Patient
+H1_ALC_pen0.02,0.62,0.123,Patient and (not (Age_4))
+H1_ALC_pen0.02,0.795,0.156,hasDurationRecord some DurationRecord
+H2_ALC_pen0.3,0.5875,0.014,Patient
+H2_ALC_pen0.3,0.62,0.127,Patient and (not (Age_4))
+H2_ALC_pen0.3,0.795,0.346,hasDurationRecord some DurationRecord
+L1_EL_120s,0.5875,0.014,Patient
+L1_EL_120s,0.795,0.086,hasDurationRecord some DurationRecord
+L1_EL_120s,0.8,20.198,Age_6 or (hasDurationRecord some DurationRecord)
+L1_EL_120s,0.8025,118.986,(Age_5 and Sex_1) or (hasDurationRecord some DurationRecord)
+L2_ALC_120s,0.5875,0.015,Patient
+L2_ALC_120s,0.62,0.121,Patient and (not (Age_4))
+L2_ALC_120s,0.795,0.356,hasDurationRecord some DurationRecord
+L3_ALCQ_120s,0.5875,0.017,Patient
+L3_ALCQ_120s,0.62,0.143,Patient and (not (Age_4))
+L3_ALCQ_120s,0.795,0.436,hasDurationRecord some DurationRecord
+L4_ALCD_120s,0.5875,0.013,Patient
+L4_ALCD_120s,0.62,0.12,Patient and (not (Age_4))
+L4_ALCD_120s,0.795,0.405,hasDurationRecord some DurationRecord
+L5_FULL_120s,0.5875,0.015,Patient
+L5_FULL_120s,0.62,0.135,Patient and (not (Age_4))
+L5_FULL_120s,0.795,0.437,hasDurationRecord some DurationRecord
+N1_ALC_noise0,0.5875,0.022,Patient
+N1_ALC_noise0,0.5925,7.8100000000000005,Patient and (Sex_0 or (not (Age_0)))
+N2_ALC_noise25,0.5875,0.013,Patient
+N2_ALC_noise25,0.62,0.127,Patient and (not (Age_4))
+N2_ALC_noise25,0.6725,1.351,hasLabRecord some CHE_6
+N2_ALC_noise25,0.68,5.461,hasLabRecord some (ALB_0 and CHE_6)
+N2_ALC_noise25,0.725,107.849,hasLabRecord some (CHE_6 and (not (ZTT_1)))
+N3_ALC_noise75,0.5875,0.013,Patient
+N3_ALC_noise75,0.62,0.156,Patient and (not (Age_4))
+N3_ALC_noise75,0.795,0.392,hasDurationRecord some DurationRecord
+N4_ALC_fmeasure,0.7402,0.019,Patient
+N4_ALC_fmeasure,0.75,0.17,Patient and (not (Age_4))
+N4_ALC_fmeasure,0.7887000000000001,0.455,hasDurationRecord some DurationRecord
+O1_OCEL_120s,0.795,,hasDurationRecord some Thing
+T1_ALC_30s,0.5875,0.017,Patient
+T1_ALC_30s,0.62,0.131,Patient and (not (Age_4))
+T1_ALC_30s,0.795,0.36,hasDurationRecord some DurationRecord
+T2_ALC_300s,0.5875,0.015,Patient
+T2_ALC_300s,0.62,0.181,Patient and (not (Age_4))
+T2_ALC_300s,0.795,0.448,hasDurationRecord some DurationRecord
+T2_ALC_300s,0.8,155.432,Age_6 or (hasDurationRecord some DurationRecord)
+T2_ALC_300s,0.8025,274.956,(Age_5 and Sex_1) or (hasDurationRecord some DurationRecord)
+X1_ALCQ_noise90_300s,0.5875,0.015,Patient
+X1_ALCQ_noise90_300s,0.62,0.124,Patient and (not (Age_4))
+X1_ALCQ_noise90_300s,0.795,0.365,hasDurationRecord some DurationRecord
+X1_ALCQ_noise90_300s,0.8,165.07,Age_6 or (hasDurationRecord some DurationRecord)
+X2_ALCD_noinf_300s,0.5875,0.017,Patient
+X2_ALCD_noinf_300s,0.62,0.144,Patient and (not (Age_4))
+X2_ALCD_noinf_300s,0.6275,0.485,ageCode some integer[>= 4]
+X2_ALCD_noinf_300s,0.66,0.49,ageCode some integer[>= 5]
+X2_ALCD_noinf_300s,0.7275,1.404,hasLabRecord some ZTT_5
+X2_ALCD_noinf_300s,0.7375,73.311,hasLabRecord some (ZTT_5 and (not (GPT_3)))
+X2_ALCD_noinf_300s,0.7425,222.802,hasLabRecord some (TTT_0 or ZTT_5)
+X2_ALCD_noinf_300s,0.75,225.36,hasLabRecord some (ZTT_5 or (ALB_0 and TTT_0))

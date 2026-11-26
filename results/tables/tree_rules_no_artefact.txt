@@ -1,0 +1,16 @@
+|--- che_mode <= 5.50
+|   |--- ztt_any_1 <= 0.50
+|   |   |--- weights: [28.00, 6.00] class: 0
+|   |--- ztt_any_1 >  0.50
+|   |   |--- weights: [44.00, 0.00] class: 0
+|--- che_mode >  5.50
+|   |--- ztt_mean <= 3.44
+|   |   |--- che_any_5 <= 0.50
+|   |   |   |--- weights: [25.00, 58.00] class: 1
+|   |   |--- che_any_5 >  0.50
+|   |   |   |--- weights: [46.00, 20.00] class: 0
+|   |--- ztt_mean >  3.44
+|   |   |--- age <= 4.50
+|   |   |   |--- weights: [13.00, 18.00] class: 1
+|   |   |--- age >  4.50
+|   |   |   |--- weights: [9.00, 133.00] class: 1

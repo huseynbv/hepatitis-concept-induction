@@ -1,0 +1,51 @@
+DL-Learner command line interface
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.apache.jena.ext.com.google.common.cache.Striped64 (file:/C:/Users/ayaz/Desktop/uistra/FRANCO-FINALS/hepatitis-concept-induction/tools/dl-learner/dllearner-1.5.0/lib/jena-shaded-guava-3.16.0.jar)
+WARNING: Please consider reporting this to the maintainers of class org.apache.jena.ext.com.google.common.cache.Striped64
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+Initializing component 'ks' of type OWL File ...
+... initialized component 'ks' in 0ms. Status: OK
+Initializing component 'reasoner' of type closed world reasoner ...
+Loaded reasoner: Pellet (com.clarkparsia.pellet.owlapiv3.PelletReasoner)
+Materializing TBox...
+materialising concepts
+[.....] 0%[.....] 1%[.....] 2%[.....] 3%[.....] 4%[.....] 5%[.....] 6%[.....] 7%[.....] 8%[.....] 9%[.....] 10%[.....] 12%[.....] 13%[.....] 14%[.....] 15%[.....] 16%[.....] 17%[.....] 18%[.....] 19%[=....] 20%[=....] 21%[=....] 23%[=....] 24%[=....] 25%[=....] 26%[=....] 27%[=....] 28%[=....] 29%[=....] 30%[=....] 31%[=....] 32%[=....] 34%[=....] 35%[=....] 36%[=....] 37%[=....] 38%[=....] 39%[==...] 40%[==...] 41%[==...] 42%[==...] 43%[==...] 45%[==...] 46%[==...] 47%[==...] 48%[==...] 49%[==...] 50%[==...] 51%[==...] 52%[==...] 53%[==...] 54%[==...] 56%[==...] 57%[==...] 58%[==...] 59%[===..] 60%[===..] 61%[===..] 62%[===..] 63%[===..] 64%[===..] 65%[===..] 67%[===..] 68%[===..] 69%[===..] 70%[===..] 71%[===..] 72%[===..] 73%[===..] 74%[===..] 75%[===..] 76%[===..] 78%[===..] 79%materialising object properties ...
+[====.] 80%[====.] 81%[====.] 82%materialising datatype properties
+[====.] 83%[====.] 84%[====.] 85%[====.] 86%[====.] 87%[====.] 89%[====.] 90%[====.] 91%[====.] 92%[====.] 93%[====.] 94%[====.] 95%[====.] 96%[====.] 97%[====.] 98%...TBox materialised in 808 ms.
+... initialized component 'reasoner' in 3s 338ms. Status: OK
+Initializing component 'op' of type rho refinement operator ...
+... initialized component 'op' in 24ms. Status: OK
+Initializing component 'accMethod' of type Predictive Accuracy ...
+... initialized component 'accMethod' in 0ms. Status: OK
+Initializing component 'lp' of type PosNegLPStandard ...
+... initialized component 'lp' in 0ms. Status: OK
+Initializing component 'alg' of type OWL Class Expression Learner ...
+... initialized component 'alg' in 2ms. Status: OK
+Running algorithm instance "alg" (OCEL)
+starting top down refinement with: Thing (58.75% accuracy)
+more accurate (79.50%) class expression found: hasDurationRecord some Thing
+Maximum time (120 seconds) reached, stopping now...
+solutions (at most 20 are shown):
+1: Patient (accuracy 58.75%, length 1, depth 0)
+2: Age_5 (accuracy 58.25%, length 1, depth 0)
+3: Sex_1 (accuracy 52.5%, length 1, depth 0)
+4: not (ALB_0) (accuracy 58.75%, length 2, depth 0)
+5: not (ALB_1) (accuracy 58.75%, length 2, depth 0)
+6: not (Activity_0) (accuracy 58.75%, length 2, depth 0)
+7: not (Activity_1) (accuracy 58.75%, length 2, depth 0)
+8: not (Activity_2) (accuracy 58.75%, length 2, depth 0)
+9: not (Activity_3) (accuracy 58.75%, length 2, depth 0)
+10: not (Activity_4) (accuracy 58.75%, length 2, depth 0)
+11: not (Age_0) (accuracy 59.75%, length 2, depth 0)
+12: not (Age_1) (accuracy 60.75%, length 2, depth 0)
+13: not (Age_2) (accuracy 58.75%, length 2, depth 0)
+14: not (Age_3) (accuracy 59.75%, length 2, depth 0)
+15: not (Age_4) (accuracy 62%, length 2, depth 0)
+16: not (Age_6) (accuracy 51%, length 2, depth 0)
+17: not (CHE_0) (accuracy 58.75%, length 2, depth 0)
+18: not (CHE_1) (accuracy 58.75%, length 2, depth 0)
+19: not (CHE_2) (accuracy 58.75%, length 2, depth 0)
+20: not (CHE_3) (accuracy 58.75%, length 2, depth 0)
+Algorithm stopped (948201 descriptions tested).
+
+# java -Xmx4g --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.lang.invoke=ALL-UNNAMED --add-opens java.base/java.lang.reflect=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.io=ALL-UNNAMED --add-opens java.base/java.net=ALL-UNNAMED -Dlog4j.configuration=file:C:/Users/ayaz/Desktop/uistra/FRANCO-FINALS/hepatitis-concept-induction/tools/dl-learner/dllearner-1.5.0/etc/log4j.properties -cp C:\Users\ayaz\Desktop\uistra\FRANCO-FINALS\hepatitis-concept-induction\tools\dl-learner\dllearner-1.5.0\lib\* org.dllearner.cli.CLI C:\Users\ayaz\Desktop\uistra\FRANCO-FINALS\hepatitis-concept-induction\configs\dl-learner\O1_OCEL_120s.conf
