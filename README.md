@@ -23,7 +23,7 @@ tests/test_dl_concepts.py       evaluator reproduces DL-Learner's training accur
 results/tables, results/figures all numbers and figures used in the report
 results/logs/*.log              full DL-Learner console output per run
 docs/                           dataset analysis, modelling choices, experimental design, environment
-report/, slides/                report and presentation
+report/report.docx, slides/slides.pptx   report and presentation
 ```
 
 ## Pipeline
